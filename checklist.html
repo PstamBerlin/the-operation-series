@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vader Build Checklist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0a0606;
+    color: #e8e8e8;
+    padding: 20px 16px 60px;
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  header {
+    border-bottom: 2px solid #c8102e;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  .top-bar {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9pt;
+    color: #c8102e;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Audiowide', sans-serif;
+    color: #c8102e;
+    font-size: 28pt;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    color: #888;
+    font-size: 10pt;
+    letter-spacing: 1.5px;
+  }
+
+  .progress-card {
+    background: rgba(200, 16, 46, 0.08);
+    border: 1px solid rgba(200, 16, 46, 0.3);
+    border-left: 4px solid #c8102e;
+    padding: 14px 16px;
+    margin-bottom: 28px;
+    border-radius: 4px;
+  }
+
+  .progress-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9pt;
+    color: #c8102e;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .progress-bar {
+    background: #1a0e10;
+    height: 14px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .progress-fill {
+    background: linear-gradient(90deg, #c8102e, #ff3050);
+    height: 100%;
+    transition: width 0.4s ease;
+    border-radius: 2px;
+  }
+
+  .progress-text {
+    font-size: 11pt;
+    color: #ccc;
+  }
+
+  .progress-text b { color: #fff; }
+
+  section {
+    margin-bottom: 28px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #2a1a1d;
+    padding-bottom: 6px;
+  }
+
+  .section-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9pt;
+    color: #c8102e;
+    letter-spacing: 2px;
+  }
+
+  h2 {
+    font-family: 'Audiowide', sans-serif;
+    color: #fff;
+    font-size: 14pt;
+    letter-spacing: 0.5px;
+  }
+
+  .section-count {
+    margin-left: auto;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10pt;
+    color: #888;
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid #333;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: #555;
+  }
+
+  .item.checked {
+    background: rgba(40, 100, 40, 0.08);
+    border-left-color: #4a8a4a;
+  }
+
+  .item.checked .item-name {
+    text-decoration: line-through;
+    color: #777;
+  }
+
+  .item.checked .item-detail {
+    color: #555;
+  }
+
+  .checkbox {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #555;
+    border-radius: 3px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0606;
+    transition: all 0.15s ease;
+  }
+
+  .item.checked .checkbox {
+    background: #4a8a4a;
+    border-color: #4a8a4a;
+  }
+
+  .item.checked .checkbox::after {
+    content: '✓';
+    color: #fff;
+    font-weight: bold;
+    font-size: 14pt;
+  }
+
+  .item-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .item-name {
+    font-weight: 600;
+    color: #eee;
+    margin-bottom: 2px;
+  }
+
+  .item-detail {
+    font-size: 10pt;
+    color: #999;
+  }
+
+  .reset-row {
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  button.reset {
+    background: transparent;
+    border: 1px solid #444;
+    color: #888;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9pt;
+    letter-spacing: 1.5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.15s ease;
+  }
+
+  button.reset:hover {
+    border-color: #c8102e;
+    color: #c8102e;
+  }
+
+  footer {
+    margin-top: 24px;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8pt;
+    color: #555;
+    letter-spacing: 2px;
+    border-top: 1px solid #2a1a1d;
+    padding-top: 16px;
+  }
+
+  .loading {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10pt;
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 22pt; }
+    h2 { font-size: 12pt; }
+    .item { padding: 12px 10px; }
+    .item-name { font-size: 11pt; }
+    .item-detail { font-size: 9.5pt; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="top-bar">
+    <span>▌ BUILD CHECKLIST ▌</span>
+    <span>HALLOWEEN 2026</span>
+  </div>
+  <h1>BUILD CHECKLIST</h1>
+  <div class="subtitle" id="clSubtitle">OPERATION VADER · BUILD CHECKLIST</div>
+  <div id="clSwitcher" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:14px;"></div>
+</header>
+
+<div class="progress-card">
+  <div class="progress-label">▌ MISSION PROGRESS</div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <div class="progress-text"><b id="progressCount">0 / 17</b> items secured · <span id="progressPct">0%</span></div>
+</div>
+
+<div id="loadingMessage" class="loading">Loading saved progress…</div>
+
+<div id="checklist" style="display:none;">
+
+<section data-section="print">
+  <div class="section-header">
+    <span class="section-num">▌ 01</span>
+    <h2>3D Print</h2>
+    <span class="section-count" id="count-print">0/9</span>
+  </div>
+</section>
+
+<section data-section="buy">
+  <div class="section-header">
+    <span class="section-num">▌ 02</span>
+    <h2>Buy</h2>
+    <span class="section-count" id="count-buy">0/8</span>
+  </div>
+</section>
+
+<div class="reset-row">
+  <button class="reset" id="resetBtn">↻ RESET CHECKLIST</button>
+</div>
+
+</div>
+
+<footer>OPERATION VADER · BUILD MANUAL · MAY THE FORCE BE WITH YOU</footer>
+
+</div>
+
+<script src="series_data.js"></script>
+<script>
+const ITEMS = {
+  print: [
+    { id: 'p1', name: 'Helmet', detail: 'Dome + faceplate. ¥75 Taobao base available — sand + paint.' },
+    { id: 'p2', name: 'Chest plate', detail: 'Roman Z Véšek (MakerWorld 189792) — primary. Free near-complete bundle: Jace1969 (Printables 22865). Paid: Galactic Armory €20.' },
+    { id: 'p3', name: 'Chest control panel', detail: 'TheMaker77 Thingiverse 3889513 (bundle) or BrettProjectGuy Printables 832807. NOTE: NOT included in Jace1969 bundle — must be sourced separately.' },
+    { id: 'p4', name: 'Shoulder armor (×2)', detail: 'Roman Z Véšek MakerWorld 189792 (bundled with chest) or Jace1969 Printables 22865 (free bundle). Mirror one STL for the pair.' },
+    { id: 'p5', name: 'Belt panels / boxes (×2)', detail: 'In TheMaker77 bundle. Print one, mirror for second.' },
+    { id: 'p6', name: 'Belt buckle', detail: 'In TheMaker77 bundle.' },
+    { id: 'p7', name: 'Codpiece', detail: 'MakerWorld 1834924 (free) or in Galactic Armory set.' },
+    { id: 'p8', name: 'Shin guards (×2)', detail: 'chadbaycroft Thingiverse 3244260 (life-size) OR Jace1969 bundle (Printables 22865 — includes shins). Avoid the OLD Jace1969 standalone shin file (Thingiverse 1651849) — prints tiny.' },
+    { id: 'p9', name: 'Saber hilt', detail: 'A neopixel saber (metal hilt, sound) from Taobao works — no print needed.' },
+  ],
+  buy: [
+    { id: 'b1', name: 'Undersuit / robe / tunic', detail: 'Black long-sleeve base layer.' },
+    { id: 'b2', name: 'Cape', detail: 'Long black flowing cape. Check thrift stores first.' },
+    { id: 'b3', name: 'Wide leather belt', detail: 'What the belt panels mount onto.' },
+    { id: 'b4', name: 'Tall boots', detail: 'Black, calf-height. Knee-high if possible.' },
+    { id: 'b5', name: 'Leather gloves', detail: 'Black, gauntlet-style.' },
+    { id: 'b6', name: 'Steel chain (1m)', detail: 'Hardware store €5–8/m, paint black, sew into cape hem. ALTERNATIVE: print Jace1969 bundle chain (Printables 22865).' },
+    { id: 'b7', name: 'LED kit', detail: '3mm LEDs · resistors · CR2032 or 9V battery · switch. Red + green + white.' },
+    { id: 'b8', name: 'Spray paint', detail: 'Black satin (Tamiya XF-69) · clear coat · small detail colors.' },
+  ]
+};
+
+const VADER_ITEMS = ITEMS;
+// Anakin items (the other on-site character)
+const ANAKIN_ITEMS = { print: [
+    { id:'p1', name:'Saber hilt (optional)', detail:'Or buy a blue neopixel saber.' }
+  ], buy: [
+    { id:'b1', name:'Brown outer tunic', detail:'Crosses over, ties under the obi.' },
+    { id:'b2', name:'Cream under-tunic', detail:'Base layer.' },
+    { id:'b3', name:'Tabards + obi + belt', detail:'Holds the tunic closed.' },
+    { id:'b4', name:'Brown trousers + tall boots', detail:'Same colour family.' },
+    { id:'b5', name:'Black glove (1)', detail:'Right hand only — the mechno-hand.' },
+    { id:'b6', name:'Brown hooded robe', detail:'Hemmed ~5cm off the floor.' },
+    { id:'b7', name:'Blue lightsaber', detail:'Set any saber to blue.' }
+  ]};
+
+const CHAR_NAMES = { vader:'Vader', anakin:'Anakin', trooper:'Trooper', luke:'Luke', kylo:'Kylo',
+  mando:'Mando', boba:'Boba', obiwan:'Obi-Wan', ahsoka:'Ahsoka', maul:'Maul', rey:'Rey',
+  han:'Han', leia:'Leia', grievous:'Grievous', bokatan:'Bo-Katan',
+  aayla:'Aayla', phasma:'Phasma', dooku:'Dooku', royalguard:'Royal Guard',
+  jango:'Jango', padme:'Padmé', nihilus:'Nihilus',
+  palpatine:'Palpatine', rex:'Rex', ventress:'Ventress', k2so:'K-2SO',
+  ig11:'IG-11', cadbane:'Cad Bane', armorer:'Armorer', sabine:'Sabine',
+  hera:'Hera', revan:'Revan',
+  plokoon:'Plo Koon', kitfisto:'Kit Fisto', bastila:'Bastila', malak:'Malak',
+  mae:'Mae', sol:'Sol', qimir:'Qimir', poe:'Poe Dameron', inquisitor:'Grand Inquisitor' };
+const CHAR_ORDER = ['vader','anakin','trooper','luke','kylo','mando','boba','obiwan','ahsoka','maul','rey','han','leia','grievous','bokatan','aayla','phasma','dooku','royalguard','jango','padme','nihilus','palpatine','rex','ventress','k2so','ig11','cadbane','armorer','sabine','hera','revan','plokoon','kitfisto','bastila','malak','mae','sol','qimir','poe','inquisitor'];
+
+function getCharKey(){
+  const q = new URLSearchParams(location.search).get('c');
+  if (q && CHAR_NAMES[q]) return q;
+  return 'vader';
+}
+let CHAR_KEY = getCharKey();
+
+// Pick the right ITEMS for the active character (with sequential ids so storage is clean)
+function itemsFor(key){
+  let raw;
+  if (key === 'vader') raw = VADER_ITEMS;
+  else if (key === 'anakin') raw = ANAKIN_ITEMS;
+  else if (window.OPS && window.OPS[key]) raw = window.OPS[key].checklist;
+  else raw = VADER_ITEMS;
+  // re-id so each character's checkboxes are independent
+  const out = { print: [], buy: [] };
+  ['print','buy'].forEach(sec => (raw[sec]||[]).forEach((it,i) => {
+    out[sec].push({ id: sec[0]+(i+1), name: it.name, detail: it.detail });
+  }));
+  return out;
+}
+
+let ITEMS_ACTIVE = itemsFor(CHAR_KEY);
+let TOTAL = ITEMS_ACTIVE.print.length + ITEMS_ACTIVE.buy.length;
+let state = {};
+const STORAGE_KEY = () => 'ops-checklist-' + CHAR_KEY;
+
+function buildSwitcher(){
+  const sw = document.getElementById('clSwitcher');
+  if (!sw) return;
+  sw.innerHTML = CHAR_ORDER.map(k =>
+    `<a href="?c=${k}" style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;`+
+    `text-decoration:none;padding:5px 11px;border-radius:14px;border:1px solid ${k===CHAR_KEY?'var(--red)':'var(--line,#2a1a1d)'};`+
+    `background:${k===CHAR_KEY?'var(--red)':'transparent'};color:${k===CHAR_KEY?'#fff':'var(--text-dim,#888)'};">${CHAR_NAMES[k]}</a>`
+  ).join('');
+  const sub = document.getElementById('clSubtitle');
+  if (sub) sub.textContent = 'OPERATION ' + CHAR_NAMES[CHAR_KEY].toUpperCase() + ' · ' + TOTAL + ' ITEMS';
+  const cp = document.getElementById('count-print'); if (cp) cp.textContent = '0/'+ITEMS_ACTIVE.print.length;
+  const cb = document.getElementById('count-buy'); if (cb) cb.textContent = '0/'+ITEMS_ACTIVE.buy.length;
+}
+
+const _STATIC_TOTAL_REMOVED = null;
+
+async function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY());
+    if (raw) state = JSON.parse(raw) || {};
+  } catch (e) {
+    state = {};
+  }
+}
+
+async function saveState() {
+  try {
+    localStorage.setItem(STORAGE_KEY(), JSON.stringify(state));
+  } catch (e) {
+    console.error('Save failed:', e);
+  }
+}
+
+function renderItems() {
+  for (const [section, items] of Object.entries(ITEMS_ACTIVE)) {
+    const container = document.querySelector(`section[data-section="${section}"]`);
+    items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'item' + (state[item.id] ? ' checked' : '');
+      div.dataset.id = item.id;
+      div.innerHTML = `
+        <div class="checkbox"></div>
+        <div class="item-content">
+          <div class="item-name">${item.name}</div>
+          <div class="item-detail">${item.detail}</div>
+        </div>
+      `;
+      div.addEventListener('click', () => toggle(item.id));
+      container.appendChild(div);
+    });
+  }
+}
+
+function toggle(id) {
+  state[id] = !state[id];
+  const el = document.querySelector(`.item[data-id="${id}"]`);
+  el.classList.toggle('checked', state[id]);
+  updateProgress();
+  saveState();
+}
+
+function updateProgress() {
+  let total = 0;
+  for (const [section, items] of Object.entries(ITEMS_ACTIVE)) {
+    const checked = items.filter(i => state[i.id]).length;
+    document.getElementById('count-' + section).textContent = `${checked}/${items.length}`;
+    total += checked;
+  }
+  const pct = Math.round((total / TOTAL) * 100);
+  document.getElementById('progressCount').textContent = `${total} / ${TOTAL}`;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+document.getElementById('resetBtn').addEventListener('click', async () => {
+  if (confirm('Reset all checks?')) {
+    state = {};
+    document.querySelectorAll('.item').forEach(el => el.classList.remove('checked'));
+    updateProgress();
+    await saveState();
+  }
+});
+
+(async () => {
+  buildSwitcher();
+  await loadState();
+  document.getElementById('loadingMessage').style.display = 'none';
+  document.getElementById('checklist').style.display = 'block';
+  renderItems();
+  updateProgress();
+})();
+</script>
+</body>
+</html>

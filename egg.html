@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>… an egg?</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Spectral:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0c08;--gold:#e6c15a;--sacred:#8fe3f0;--text:#eae6d4;--dim:#9fae94;--faint:#5d6b54}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(ellipse 70% 50% at 50% 20%,rgba(230,193,90,.06),transparent 65%),var(--bg);
+  color:var(--text);font-family:'Spectral',Georgia,serif;min-height:100vh;overflow-x:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 18px}
+.note{font-family:'Cinzel',serif;letter-spacing:4px;font-size:11px;color:var(--sacred);text-transform:uppercase}
+h1{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(30px,6vw,52px);color:#fff;margin:10px 0 6px}
+.sub{color:var(--dim);font-style:italic;max-width:460px;margin:0 auto 26px}
+.stage{position:relative;width:240px;height:260px;margin:0 auto;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.stage svg{width:100%;height:100%;overflow:visible}
+.crack{opacity:0;transition:opacity .15s}
+.crack.on{opacity:1}
+@keyframes wob{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}55%{transform:rotate(5deg)}80%{transform:rotate(-3deg)}}
+.wobble{animation:wob .5s ease;transform-origin:50% 85%}
+#topShell{transition:transform .7s cubic-bezier(.2,.6,.2,1),opacity .7s;transform-origin:50% 100%}
+.hatched #topShell{transform:translate(-70px,-130px) rotate(-50deg);opacity:0}
+#chick{opacity:0;transform:translateY(26px) scale(.6);transform-origin:50% 90%}
+.hatched #chick{opacity:1;transform:none;transition:all .5s cubic-bezier(.34,1.5,.5,1) .15s}
+@keyframes cheep{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.hatched #chick.bounce{animation:cheep .45s ease}
+.cap{font-family:'Cinzel',serif;letter-spacing:2px;font-size:15px;color:var(--gold);margin-top:20px;min-height:24px}
+.hint{color:var(--faint);font-size:13px;font-style:italic;margin-top:6px}
+.back{display:inline-block;margin-top:34px;font-family:'Cinzel',serif;letter-spacing:3px;font-size:12px;color:var(--dim);text-decoration:none}
+.back:hover{color:var(--gold)}
+.confetti{position:absolute;width:7px;height:7px;border-radius:2px;pointer-events:none;animation:conf 1s ease-out forwards}
+@keyframes conf{from{opacity:1;transform:translate(0,0) rotate(0)}to{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(260deg)}}
+.cucco{position:fixed;z-index:50;pointer-events:none;animation:fly linear forwards}
+.cucco svg{width:64px;height:auto}
+.cucco .w{transform-origin:55% 42%;animation:flap .18s ease-in-out infinite alternate}
+@keyframes flap{from{transform:rotate(-24deg)}to{transform:rotate(18deg)}}
+@keyframes fly{from{transform:translateX(var(--x0)) translateY(0)}to{transform:translateX(var(--x1)) translateY(var(--yv))}}
+@keyframes quake{0%,100%{transform:translate(0,0)}20%{transform:translate(-7px,4px)}40%{transform:translate(6px,-5px)}60%{transform:translate(-5px,-4px)}80%{transform:translate(6px,5px)}}
+body.shake{animation:quake .4s linear infinite}
+</style>
+</head>
+<body>
+<div class="note">♪ another secret ♪</div>
+<h1>…an Egg?</h1>
+<p class="sub">You've come all this way, Hero, and your reward is… this. It feels warm. <b style="color:var(--text)">Tap it.</b></p>
+
+<div class="stage" id="stage" role="button" aria-label="the egg — tap it">
+  <svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+    <!-- nest -->
+    <ellipse cx="120" cy="222" rx="86" ry="26" fill="#4a3a22"/>
+    <ellipse cx="120" cy="216" rx="78" ry="21" fill="#6b5433"/>
+    <path d="M48 214 Q70 200 96 210 M84 222 Q120 206 158 218 M120 212 Q150 202 186 214 M60 224 Q90 214 128 224" stroke="#8a6c3f" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="120" cy="228" rx="70" ry="14" fill="#3a2d1a"/>
+
+    <!-- egg group -->
+    <g id="egg">
+      <g id="bottomShell">
+        <path d="M64 168 C64 210 92 224 120 224 C148 224 176 210 176 168 L176 158 L64 158 Z" fill="#f2ecdc" stroke="#c9bfa4" stroke-width="2"/>
+        <path d="M64 160 L78 172 L92 158 L106 172 L120 158 L134 172 L148 158 L162 172 L176 160" fill="none" stroke="#c9bfa4" stroke-width="2"/>
+      </g>
+      <g id="topShell">
+        <path d="M64 162 C62 96 88 42 120 42 C152 42 178 96 176 162 L162 172 L148 158 L134 172 L120 158 L106 172 L92 158 L78 172 Z" fill="#f6f0e2" stroke="#c9bfa4" stroke-width="2"/>
+        <ellipse cx="102" cy="86" rx="16" ry="24" fill="#ffffff" opacity=".5"/>
+        <circle cx="138" cy="72" r="3" fill="#d9cfae"/><circle cx="96" cy="128" r="2.6" fill="#d9cfae"/><circle cx="146" cy="120" r="2.2" fill="#d9cfae"/>
+        <g id="crack1" class="crack"><path d="M112 58 L120 74 L112 88 L122 102" fill="none" stroke="#9a8f6e" stroke-width="2.4" stroke-linecap="round"/></g>
+        <g id="crack2" class="crack">
+          <path d="M142 66 L134 84 L146 98 L136 116 L148 128" fill="none" stroke="#9a8f6e" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M88 92 L98 108 L86 124 L98 140" fill="none" stroke="#9a8f6e" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M122 102 L116 122 L126 140" fill="none" stroke="#9a8f6e" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </g>
+      <!-- chick (hidden inside until hatch) -->
+      <g id="chick">
+        <ellipse cx="120" cy="178" rx="34" ry="30" fill="#ffd94a" stroke="#d9a41e" stroke-width="2"/>
+        <circle cx="120" cy="136" r="26" fill="#ffe063" stroke="#d9a41e" stroke-width="2"/>
+        <path d="M104 112 Q108 102 114 110 M112 108 Q118 98 122 108 M120 108 Q128 100 130 110" fill="none" stroke="#d9a41e" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="110" cy="132" r="3.6" fill="#2b2417"/><circle cx="130" cy="132" r="3.6" fill="#2b2417"/>
+        <circle cx="111.4" cy="130.6" r="1.2" fill="#fff"/><circle cx="131.4" cy="130.6" r="1.2" fill="#fff"/>
+        <path d="M114 142 L126 142 L120 152 Z" fill="#f08c1e" stroke="#b8641a" stroke-width="1.4"/>
+        <path d="M88 172 Q78 180 86 190 Q94 186 96 178 Z" fill="#ffe063" stroke="#d9a41e" stroke-width="2"/>
+        <path d="M152 172 Q162 180 154 190 Q146 186 144 178 Z" fill="#ffe063" stroke="#d9a41e" stroke-width="2"/>
+        <path d="M108 206 L108 216 M104 216 L112 216 M132 206 L132 216 M128 216 L136 216" stroke="#f08c1e" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<p class="cap" id="cap">It wobbles when you touch it…</p>
+<p class="hint" id="hint">(tap the egg)</p>
+<a class="back" href="master-sword.html">← back to the Master Sword</a>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage'), egg=document.getElementById('egg');
+  var cap=document.getElementById('cap'), hint=document.getElementById('hint');
+  var state=0, chickPokes=0, swarming=false;
+  function wobble(){ egg.classList.remove('wobble'); void egg.offsetWidth; egg.classList.add('wobble'); }
+  function confetti(){
+    for(var i=0;i<16;i++){
+      var c=document.createElement('div'); c.className='confetti';
+      c.style.left='50%'; c.style.top='55%';
+      c.style.background=['#ffd94a','#e6c15a','#8fe3f0','#fff','#f08c1e'][i%5];
+      c.style.setProperty('--dx',(Math.random()*220-110)+'px');
+      c.style.setProperty('--dy',(Math.random()*-190-30)+'px');
+      stage.appendChild(c); setTimeout(function(el){return function(){el.remove();};}(c),1100);
+    }
+  }
+  var CUCCO='<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg">'+
+    '<ellipse cx="34" cy="28" rx="20" ry="14" fill="#f7f3e8" stroke="#c9bfa4" stroke-width="1.5"/>'+
+    '<path class="w" d="M30 24 Q18 8 4 14 Q14 24 28 30 Z" fill="#efe9d8" stroke="#c9bfa4" stroke-width="1.5"/>'+
+    '<circle cx="50" cy="18" r="9" fill="#f7f3e8" stroke="#c9bfa4" stroke-width="1.5"/>'+
+    '<path d="M48 8 Q50 4 53 8 Q55 4 57 9 Z" fill="#d94a3a"/>'+
+    '<path d="M58 18 L66 21 L58 24 Z" fill="#f0a41e"/>'+
+    '<circle cx="52" cy="16" r="2.2" fill="#2b2417"/>'+
+    '<path d="M14 32 Q8 36 12 42 M20 34 Q16 40 20 44" stroke="#c9bfa4" stroke-width="1.5" fill="none"/></svg>';
+  function swarm(){
+    if(swarming) return; swarming=true;
+    document.body.classList.add('shake');
+    cap.textContent='YOU SHOULDN’T HAVE DONE THAT.'; hint.textContent='(the Cuccos remember)';
+    for(var i=0;i<16;i++){
+      (function(i){ setTimeout(function(){
+        var b=document.createElement('div'); b.className='cucco'; b.innerHTML=CUCCO;
+        var ltr=Math.random()<.5, dur=(Math.random()*1.6+1.2);
+        b.style.top=(Math.random()*88)+'vh';
+        b.style.setProperty('--x0', ltr?'-90px':'105vw');
+        b.style.setProperty('--x1', ltr?'105vw':'-90px');
+        b.style.setProperty('--yv',(Math.random()*120-60)+'px');
+        if(!ltr) b.style.transform='scaleX(-1)';
+        b.style.animationDuration=dur+'s';
+        document.body.appendChild(b);
+        setTimeout(function(){b.remove();}, dur*1000+150);
+      }, i*180); })(i);
+    }
+    setTimeout(function(){
+      document.body.classList.remove('shake'); swarming=false; chickPokes=0;
+      cap.textContent='…okay. Truce. 🐣'; hint.textContent='(be nice to the chick)';
+    }, 4200);
+  }
+  stage.addEventListener('click', function(){
+    if(state===0){ state=1; wobble(); document.getElementById('crack1').classList.add('on'); cap.textContent='crack…'; hint.textContent='(again!)'; }
+    else if(state===1){ state=2; wobble(); document.getElementById('crack2').classList.add('on'); cap.textContent='CRACK…!'; hint.textContent='(one more!)'; }
+    else if(state===2){ state=3; egg.parentElement.parentElement.classList.add('hatched'); confetti();
+      cap.textContent='CHEEP! — a Cucco chick!'; hint.textContent='(it likes you. probably. keep petting it…?)'; }
+    else{
+      var chick=document.getElementById('chick');
+      chick.classList.remove('bounce'); void chick.offsetWidth; chick.classList.add('bounce');
+      chickPokes++;
+      if(chickPokes===3){ cap.textContent='cheep.'; hint.textContent='(…it’s getting annoyed)'; }
+      else if(chickPokes===4){ cap.textContent='CHEEP. ⚠'; hint.textContent='(you know what happens in Zelda when you keep hitting a Cucco…)'; }
+      else if(chickPokes>=5){ swarm(); }
+      else { cap.textContent='cheep cheep!'; }
+    }
+  });
+})();
+</script>
+<!-- ✦ the chick went somewhere ✦ -->
+<a href="shoes.html" class="secret-steps" title="…tiny footprints?" aria-label="follow the footprints">
+  <svg viewBox="0 0 34 22"><g fill="#e6c15a"><path d="M4 16 l3 -2 M4 16 l3.4 .8 M4 16 l1 3.4" stroke="#e6c15a" stroke-width="1.6" stroke-linecap="round"/><path d="M15 10 l3 -2 M15 10 l3.4 .8 M15 10 l1 3.4" stroke="#e6c15a" stroke-width="1.6" stroke-linecap="round"/><path d="M26 4 l3 -2 M26 4 l3.4 .8 M26 4 l1 3.4" stroke="#e6c15a" stroke-width="1.6" stroke-linecap="round"/></g></svg>
+</a>
+<style>
+.secret-steps{position:fixed;bottom:12px;right:14px;z-index:60;width:30px;opacity:.09;transition:opacity .45s ease,transform .45s ease}
+.secret-steps:hover,.secret-steps:focus{opacity:1;transform:scale(1.25);filter:drop-shadow(0 0 8px rgba(230,193,90,.6));outline:none}
+</style>
+</body>
+</html>

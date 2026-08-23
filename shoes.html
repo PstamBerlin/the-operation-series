@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLE ARCHIVE — secret drop 001</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4f1ea;--ink:#141414;--volt:#c8f31d;--hot:#ff5a1f;--soft:#8a857a;--card:#ffffff;--line:#dcd7cc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Space Grotesk',sans-serif;line-height:1.6;overflow-x:hidden}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+a{color:inherit}
+::selection{background:var(--volt)}
+
+/* marquee tape */
+.tape{background:var(--ink);color:var(--volt);font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:2px;
+  white-space:nowrap;overflow:hidden;padding:8px 0;text-transform:uppercase}
+.tape span{display:inline-block;animation:slide 22s linear infinite}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+header{padding:44px 0 10px;position:relative}
+.kick{display:inline-block;background:var(--hot);color:#fff;font-family:'Archivo Black',sans-serif;font-size:11px;
+  letter-spacing:2px;padding:5px 12px;transform:rotate(-2deg);text-transform:uppercase}
+h1{font-family:'Archivo Black',sans-serif;font-size:clamp(46px,10vw,110px);line-height:.92;text-transform:uppercase;margin:16px 0 8px}
+h1 .o{color:transparent;-webkit-text-stroke:3px var(--ink)}
+.sub{font-size:18px;color:var(--soft);max-width:560px}
+.sub b{color:var(--ink)}
+
+.shoe-stage{position:relative;margin:26px auto 8px;max-width:640px}
+.shoe-stage svg{width:100%;height:auto;filter:drop-shadow(0 22px 24px rgba(20,20,20,.18))}
+.sticker{position:absolute;font-family:'Archivo Black',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;
+  background:var(--volt);color:var(--ink);padding:8px 14px;transform:rotate(6deg);box-shadow:3px 3px 0 var(--ink)}
+.sticker.a{top:4%;right:2%}
+.sticker.b{bottom:10%;left:0;transform:rotate(-5deg);background:#fff}
+
+h2{font-family:'Archivo Black',sans-serif;font-size:clamp(24px,4.4vw,38px);text-transform:uppercase;margin:60px 0 6px}
+h2 .tag{display:inline-block;background:var(--ink);color:var(--volt);font-size:11px;letter-spacing:2px;padding:4px 10px;
+  vertical-align:middle;margin-right:12px;transform:translateY(-4px) rotate(-2deg)}
+.lead{color:var(--soft);margin-bottom:18px;max-width:640px}
+.lead b{color:var(--ink)}
+
+.pull{border-left:8px solid var(--volt);background:var(--card);padding:22px 26px;margin:20px 0;
+  font-family:'Archivo Black',sans-serif;font-size:clamp(18px,3vw,26px);line-height:1.25;text-transform:uppercase}
+.pull small{display:block;font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--soft);text-transform:none;
+  font-weight:400;margin-top:8px}
+
+/* hardness meter */
+.meter{background:var(--card);border:2px solid var(--ink);padding:26px 26px 18px;margin:20px 0}
+.bar{height:18px;border:2px solid var(--ink);border-radius:10px;background:linear-gradient(90deg,#9fe8ff 0%,#c8f31d 30%,#ffd23f 60%,#ff5a1f 85%,#141414 100%)}
+.marks{display:flex;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:1px;margin-top:6px;color:var(--soft)}
+.zones{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:18px}
+.zone{border:2px solid var(--ink);background:var(--paper);padding:14px 16px}
+.zone .h{font-family:'Archivo Black',sans-serif;font-size:15px;text-transform:uppercase}
+.zone .h em{font-style:normal;background:var(--volt);padding:0 6px}
+.zone p{font-size:13.5px;color:#3c382f;margin-top:6px;line-height:1.5}
+.zone.bad{background:#141414;color:#eee}.zone.bad p{color:#bbb}.zone.bad .h{color:#fff}.zone.bad .h em{background:var(--hot);color:#fff}
+
+/* morphlex card */
+.morph{display:flex;gap:22px;align-items:center;background:var(--ink);color:#f2efe6;padding:26px 28px;margin:22px 0;flex-wrap:wrap}
+.morph .badge{flex:0 0 auto;font-family:'Archivo Black',sans-serif;background:var(--volt);color:var(--ink);
+  padding:16px 14px;font-size:20px;line-height:1;text-transform:uppercase;transform:rotate(-3deg);box-shadow:4px 4px 0 var(--hot)}
+.morph .txt{flex:1;min-width:240px;font-size:15px}
+.morph .txt b{color:var(--volt)}
+
+/* model cards */
+.featured{background:var(--card);border:3px solid var(--ink);padding:26px 28px;margin:20px 0;position:relative}
+.featured .fl{position:absolute;top:-14px;left:22px;background:var(--hot);color:#fff;font-family:'Archivo Black',sans-serif;
+  font-size:11px;letter-spacing:2px;padding:5px 12px;text-transform:uppercase;transform:rotate(-2deg)}
+.featured h3{font-family:'Archivo Black',sans-serif;font-size:24px;text-transform:uppercase}
+.featured .by{color:var(--soft);font-size:14px;margin:2px 0 10px}
+.featured p{font-size:15px;max-width:620px}
+.btn{display:inline-block;margin-top:14px;font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:1px;
+  text-transform:uppercase;text-decoration:none;background:var(--ink);color:var(--volt);padding:12px 20px;box-shadow:4px 4px 0 var(--volt);transition:.15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--volt)}
+.btn.alt{background:var(--paper);color:var(--ink);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px;margin-top:16px}
+.mcard{background:var(--card);border:2px solid var(--ink);padding:16px 18px;display:flex;flex-direction:column;gap:4px;
+  text-decoration:none;transition:.15s;position:relative}
+.mcard:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--volt)}
+.mcard .k{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--hot)}
+.mcard .n{font-family:'Archivo Black',sans-serif;font-size:15.5px;line-height:1.25;text-transform:uppercase}
+.mcard .d{font-size:12.5px;color:var(--soft)}
+.mcard .note{font-size:12.5px;color:#3c382f;margin-top:4px}
+.plat{font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin:26px 0 2px}
+
+ol.rules{list-style:none;counter-reset:r;margin-top:10px}
+ol.rules li{counter-increment:r;position:relative;padding:14px 0 14px 58px;border-bottom:2px solid var(--line);font-size:15px}
+ol.rules li::before{content:"0" counter(r);position:absolute;left:0;top:12px;font-family:'Archivo Black',sans-serif;
+  font-size:20px;color:var(--ink);background:var(--volt);padding:2px 7px;transform:rotate(-3deg)}
+ol.rules b{text-transform:uppercase}
+
+.disc{margin:56px 0 20px;border-top:3px solid var(--ink);padding-top:22px;font-size:12.5px;color:var(--soft);line-height:1.8}
+footer{padding:6px 0 60px}
+footer a{font-family:'Archivo Black',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:var(--soft)}
+footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="tape"><span>FULLY 3D PRINTED — NO LACES — NO GLUE — SOFT TPU ONLY — PRINT · WEAR · WALK — FULLY 3D PRINTED — NO LACES — NO GLUE — SOFT TPU ONLY — PRINT · WEAR · WALK —&nbsp;</span></div>
+
+<header><div class="wrap">
+  <span class="kick">🤫 secret drop 001 · you followed the footprints</span>
+  <h1>SOLE<br><span class="o">ARCHIVE</span></h1>
+  <p class="sub">You can <b>3D print actual shoes</b>. Ones you wear outside. The whole game is one word: <b>softness</b>.</p>
+
+  <div class="shoe-stage">
+    <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- outsole -->
+      <path d="M28 252 C60 268 140 274 240 272 C350 270 470 262 520 244 C536 238 540 224 528 218 C500 206 420 202 340 202 L100 210 C60 214 30 226 24 238 C21 244 22 249 28 252 Z" fill="#141414"/>
+      <path d="M40 258 L52 246 M70 262 L82 250 M102 266 L114 252 M136 268 L146 254 M172 268 L180 255 M206 269 L214 256 M242 269 L248 256 M278 268 L284 255 M314 266 L320 254 M350 264 L356 252 M388 262 L394 250 M424 258 L430 247 M458 254 L464 244 M490 249 L496 240" stroke="#c8f31d" stroke-width="5" stroke-linecap="round"/>
+      <!-- midsole -->
+      <path d="M30 234 C70 222 120 214 200 210 C300 205 420 198 500 202 C524 203 534 212 528 220 C520 230 470 240 380 244 C280 248 120 250 60 246 C36 244 24 240 30 234 Z" fill="#ffffff" stroke="#141414" stroke-width="4"/>
+      <path d="M60 236 Q64 228 60 222 M96 236 Q100 228 96 220 M134 236 Q138 226 134 218 M174 234 Q178 226 174 216 M216 233 Q220 224 216 214 M260 231 Q264 222 260 212 M306 229 Q310 220 306 210 M352 227 Q356 218 352 208 M398 224 Q402 216 398 208 M444 221 Q448 214 444 206" stroke="#dcd7cc" stroke-width="3" fill="none"/>
+      <!-- upper (knit) -->
+      <path d="M96 212 C100 160 132 108 190 84 C232 66 270 64 300 72 C322 78 338 92 356 110 C380 134 428 160 480 172 C506 178 516 190 512 200 C500 214 420 214 340 212 Z" fill="#ff5a1f" stroke="#141414" stroke-width="4"/>
+      <!-- knit crosszag texture -->
+      <g stroke="#c43e0f" stroke-width="2" opacity=".85">
+        <path d="M130 200 L180 96 M158 204 L212 88 M188 206 L244 80 M220 208 L276 76 M252 208 L308 78 M284 208 L338 88 M316 208 L366 100 M348 208 L396 118 M380 208 L428 136 M412 208 L458 152 M444 208 L484 166"/>
+        <path d="M112 176 L146 206 M124 148 L188 208 M144 118 L232 208 M170 96 L276 206 M202 80 L320 204 M238 72 L362 202 M278 72 L404 200 M322 82 L446 198 M370 100 L482 192" opacity=".6"/>
+      </g>
+      <!-- collar + heel -->
+      <path d="M96 212 C98 184 106 158 122 138 L150 138 C136 160 128 186 126 212 Z" fill="#141414"/>
+      <path d="M122 138 C140 118 162 100 190 88 L212 96 C180 110 156 126 150 138 Z" fill="#141414" opacity=".85"/>
+      <!-- no-lace tension band -->
+      <path d="M212 96 C246 82 282 80 306 90 C322 97 334 108 348 122" fill="none" stroke="#141414" stroke-width="10" stroke-linecap="round"/>
+      <path d="M212 96 C246 82 282 80 306 90 C322 97 334 108 348 122" fill="none" stroke="#c8f31d" stroke-width="5" stroke-linecap="round"/>
+      <!-- vents -->
+      <g fill="#141414"><circle cx="404" cy="182" r="4"/><circle cx="424" cy="176" r="4"/><circle cx="444" cy="172" r="4"/><circle cx="464" cy="170" r="4"/></g>
+    </svg>
+    <span class="sticker a">100% printed</span>
+    <span class="sticker b">0 laces · 0 glue</span>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+  <!-- ================= PLASTIC ================= -->
+  <h2><span class="tag">01</span>The Plastic</h2>
+  <p class="lead">Shoes live or die on the filament. Regular hard plastic (PLA) makes a shoe-shaped <b>brick</b>. You want <b>TPU</b> — flexible filament — and the number on the spool (<b>Shore hardness</b>, like 85A or 95A) decides everything.</p>
+
+  <div class="pull">"The harder the TPU, the worse the shoe."
+    <small>Backed by the filament makers themselves: a whole shoe in hard 95A is "a heavy, dense shoe with zero shock absorption — it bends but doesn't bounce." (Siraya Tech)</small>
+  </div>
+
+  <div class="meter">
+    <div class="bar"></div>
+    <div class="marks"><span>60A · jelly</span><span>75A</span><span>85A</span><span>90A</span><span>95A+ · brick</span></div>
+    <div class="zones">
+      <div class="zone"><div class="h"><em>~75A</em> cloud mode</div><p>Ultra-soft, squishy like a running-shoe sole. Raw 75A filament is nearly unprintable (it buckles like a wet noodle) — this softness is what MorPhlex reaches <i>after</i> printing.</p></div>
+      <div class="zone"><div class="h"><em>85A</em> the sweet spot</div><p>Midsoles &amp; insoles. Squishes under your heel, springs back with every step. Needs direct drive + slow printing (~15–30&nbsp;mm/s), but this is the comfort zone.</p></div>
+      <div class="zone"><div class="h"><em>90A</em> firm flex</div><p>The easy printer: feeds cleanly, still flexes. Most wearable shoe models (like the Airberry) are tuned for TPU 90A.</p></div>
+      <div class="zone bad"><div class="h"><em>95A+</em> outsole only</div><p>Great where the shoe meets concrete — hard-wearing tread that survives the street. But a WHOLE shoe in 95A? Heavy, stiff, zero bounce. That's the trap.</p></div>
+    </div>
+  </div>
+
+  <div class="morph">
+    <div class="badge">MOR<br>PHLEX</div>
+    <div class="txt"><b>The cheat code: BIQU MorPhlex.</b> A "variable hardness" TPU made for shoes. It <b>prints firm at 90A</b> — so it feeds through the printer like a normal, easy filament — then <b>softens to about 75A</b> afterwards. You print at brick-hardness, you walk on cloud-softness. Best of both worlds, and exactly why soft-after, firm-during beats plain hard TPU.</div>
+  </div>
+
+  <!-- ================= THE DROP ================= -->
+  <h2><span class="tag">02</span>The Drop</h2>
+  <p class="lead">Real, wearable, free models — hunted from every platform. Print at 100% for the base size, or scale to your foot.</p>
+
+  <div class="featured">
+    <span class="fl">★ grail of the drop</span>
+    <h3>Airberry — lightweight sneaker</h3>
+    <div class="by">by <b>CloudBerry</b> · MakerWorld · TPU 90A · 0.4mm nozzle</div>
+    <p>A real slip-on sneaker with a <b>no-lace tension system</b> and zoned insides: flexible midsole, wear-resistant outsole, breathable knit-style upper (the Crosszag infill trick makes plastic feel like fabric). Ready-sliced profiles for Bambu printers — and adjustable to your exact foot.</p>
+    <a class="btn" href="https://makerworld.com/en/models/1238547-airberry-a-3d-printed-lightweight-sneaker" target="_blank" rel="noopener">Get the Airberry ↗</a>
+    <a class="btn alt" href="https://makerworld.com/en/@Cloudberry" target="_blank" rel="noopener">More CloudBerry ↗</a>
+  </div>
+
+  <div class="plat">▚ MakerWorld</div>
+  <div class="grid">
+    <a class="mcard" href="https://makerworld.com/en/models/1236494-bubbleberry-a-3d-printed-round-toe-casual-shoe" target="_blank" rel="noopener"><span class="k">casual</span><span class="n">Bubbleberry</span><span class="d">CloudBerry</span><span class="note">Round-toe slip-on, TPU 90A, fabric-soft zoned infill.</span></a>
+    <a class="mcard" href="https://makerworld.com/en/models/1229146-whaleberry-a-3d-printed-thick-soled-casual-shoe" target="_blank" rel="noopener"><span class="k">casual</span><span class="n">Whaleberry</span><span class="d">CloudBerry</span><span class="note">Thick generative sole, whale-inspired upper.</span></a>
+    <a class="mcard" href="https://makerworld.com/en/models/488792-slide-shoes-adilette-fully-3d-printed" target="_blank" rel="noopener"><span class="k">slide</span><span class="n">Adilette Slides</span><span class="d">MakerVerse Designs</span><span class="note">21,900+ downloads. Prints standing, no supports on textured PEI.</span></a>
+    <a class="mcard" href="https://makerworld.com/en/models/425034-crocs-shoes-fully-3d-printed" target="_blank" rel="noopener"><span class="k">clog</span><span class="n">Crocs (wearable)</span><span class="d">MakerVerse Designs</span><span class="note">TPU clog + PLA snap button. Kids version exists too.</span></a>
+    <a class="mcard" href="https://makerworld.com/en/models/1873409-citystep-casual-everyday-sneaker" target="_blank" rel="noopener"><span class="k">sneaker</span><span class="n">CityStep</span><span class="d">DjangoCashflow</span><span class="note">Knit-like breathable upper — no solid outer wall.</span></a>
+    <a class="mcard" href="https://makerworld.com/en/models/2090421-dragon-sole-tpu-shoes" target="_blank" rel="noopener"><span class="k">sneaker</span><span class="n">Dragon Sole</span><span class="d">Asphalt3D</span><span class="note">The yellow/black Game-of-Death colourway. Tunable cushioning.</span></a>
+    <a class="mcard" href="https://makerworld.com/en/models/1246598-veloform-a-pair-of-3d-printed-casual-shoes" target="_blank" rel="noopener"><span class="k">casual</span><span class="n">Veloform</span><span class="d">Madai</span><span class="note">One-piece wavy organic shoe, soft zigzag TPU build.</span></a>
+    <a class="mcard" href="https://makerworld.com/en/models/1684942-quick-print-tpu-slide-sandals" target="_blank" rel="noopener"><span class="k">slide</span><span class="n">Quick-Print Slides</span><span class="d">MakerWorld</span><span class="note">Both slides in ~6 hours — snap-fit, no glue.</span></a>
+  </div>
+
+  <div class="plat">▚ Printables</div>
+  <div class="grid">
+    <a class="mcard" href="https://www.printables.com/model/934699-tora-barefoot-shoes" target="_blank" rel="noopener"><span class="k">barefoot</span><span class="n">Tora Barefoot</span><span class="d">River Family</span><span class="note">The Printables standout — 7K downloads, no supports, multi-size.</span></a>
+    <a class="mcard" href="https://www.printables.com/model/934689-g1-barefoot-shoes" target="_blank" rel="noopener"><span class="k">barefoot</span><span class="n">G1 Barefoot</span><span class="d">River Family</span><span class="note">The original of the whole barefoot line.</span></a>
+    <a class="mcard" href="https://www.printables.com/model/1622036-barefoot-sneakers" target="_blank" rel="noopener"><span class="k">sneaker</span><span class="n">Barefoot Sneakers</span><span class="d">gimpelginster</span><span class="note">Soft TPU 85A, sizes EU 35–47 by foot length.</span></a>
+    <a class="mcard" href="https://www.printables.com/model/1234861-slide-shoes-fully-3d-printed-wavy-sole-pattern" target="_blank" rel="noopener"><span class="k">slide</span><span class="n">Wavy Slides</span><span class="d">How To Homemade</span><span class="note">Wave-grip sole remix, support-free standing print.</span></a>
+    <a class="mcard" href="https://www.printables.com/model/103950-flexible-flip-flop-shoe" target="_blank" rel="noopener"><span class="k">sandal</span><span class="n">Flexible Flip Flop</span><span class="d">ZachMods</span><span class="note">≤5% infill base = squish. Press-fit strap, no glue.</span></a>
+  </div>
+
+  <div class="plat">▚ Thingiverse · the classics</div>
+  <div class="grid">
+    <a class="mcard" href="https://www.thingiverse.com/thing:285404" target="_blank" rel="noopener"><span class="k">sneaker</span><span class="n">Recreus Sneakers II</span><span class="d">Ignacio García (Recreus)</span><span class="note">THE legendary one — the model that proved printed shoes work (by the makers of Filaflex).</span></a>
+    <a class="mcard" href="https://www.thingiverse.com/search?q=tpu+shoes" target="_blank" rel="noopener"><span class="k">browse</span><span class="n">More classics</span><span class="d">Thingiverse</span><span class="note">Tyro 119, Palmiga sandals, wearable slides &amp; more.</span></a>
+  </div>
+
+  <div class="plat">▚ keep digging</div>
+  <div class="grid">
+    <a class="mcard" href="https://makerworld.com/en/collections/6050951-3d-printed-shoes" target="_blank" rel="noopener"><span class="k">collection</span><span class="n">3D-Printed Shoes</span><span class="d">MakerWorld collection</span></a>
+    <a class="mcard" href="https://makerworld.com/en/collections/3660155-tpu-shoes" target="_blank" rel="noopener"><span class="k">collection</span><span class="n">TPU Shoes</span><span class="d">MakerWorld collection</span></a>
+    <a class="mcard" href="https://www.printables.com/search/models?q=tpu%20shoes" target="_blank" rel="noopener"><span class="k">search</span><span class="n">TPU shoes</span><span class="d">Printables search</span></a>
+  </div>
+
+  <!-- ================= PRINT RULES ================= -->
+  <h2><span class="tag">03</span>Print Rules</h2>
+  <p class="lead">TPU isn't hard — it's just <b>different</b>. Six rules and your shoes come out right:</p>
+  <ol class="rules">
+    <li><b>Go slow.</b> 20–40 mm/s (20–30 for extra-soft). Almost every failed flexible print is speed, not the material.</li>
+    <li><b>Direct drive only</b> for soft TPU. Pushing floppy filament through a long Bowden tube is pushing a wet noodle — it buckles. 95A survives Bowden; 85A and softer usually won't.</li>
+    <li><b>Dry the filament.</b> TPU drinks moisture from the air → stringy, bubbly, weak prints. Dry it before a big shoe print.</li>
+    <li><b>Print them standing.</b> Shoes print upright on the plate — that's how the designs are meant to go, and standing on textured PEI they need <b>no supports</b> (TPU supports fuse on and never come off).</li>
+    <li><b>Use the designer's infill.</b> If the model page or its print profile says a specific infill — pattern or percentage — <b>use exactly that</b>: the designer tuned it for the shoe. No spec given? Then 10–25% gyroid is your fallback — it flexes evenly like foam. More air = squishier step.</li>
+    <li><b>Wear them wet.</b> TPU is abrasion-tough and doesn't care about water — people print shower slides. Mild soap, rinse, air-dry.</li>
+  </ol>
+
+  <div class="pull" style="border-color:var(--hot)">Fit tip: print ONE insole first.
+    <small>One flat insole tests your size, your filament and your printer for pennies — before you commit 40 hours to a full pair.</small>
+  </div>
+
+  <div class="disc">
+    <b style="color:var(--ink)">SECRET DROP 001 · SOLE ARCHIVE.</b> A hidden bonus inside The Operation Series — found by following a chick's footprints, obviously.
+    Every model belongs to its designer (CloudBerry, MakerVerse Designs, River Family, Ignacio García/Recreus &amp; friends) — links go to their pages, nothing is hosted here. Leave them a like and a make; makers run on that.
+    Check each model's licence before printing. Print for your own feet, not for sale. Shoe fit is personal — printed shoes are awesome, but they're a hobby project, not medical footwear.
+  </div>
+  <footer><a href="egg.html">← back to the chick</a> &nbsp;·&nbsp; <a href="index.html">← the archive</a></footer>
+</div>
+</body>
+</html>

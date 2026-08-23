@@ -1,0 +1,59 @@
+============================================================
+  HOW TO SHARE THIS  —  for Peter (with a grown-up to help)
+============================================================
+
+You built a whole website + manuals. To let other people open it
+from a LINK, the files have to live online. Putting them online
+needs an account, so ask a grown-up (Dad!) to help with THIS part.
+Everything else you can do yourself.
+
+
+WHAT'S IN THIS FOLDER
+---------------------
+  index.html          <- the MAIN website (this is the one to open)
+  find-your-build.html<- the 4-question build matcher
+  compare-builds.html <- compare builds side by side
+  squad-builder.html  <- plan a group cosplay
+  build-sheet.html    <- printable project sheet + showcase card
+  3d-models.html      <- the 3D model archive
+  checklist.html      <- the tickable parts list
+  46 characters x 2 PDFs = 92 manuals & calendars
+  (Vader's are named manual_public.pdf / manual_byweek.pdf)
+
+
+EASIEST WAYS TO PUT IT ONLINE  (pick ONE)
+-----------------------------------------
+
+OPTION 1 - GitHub Pages  (you already use this for gongbans!)
+  1. Make a new GitHub repo (or a new folder in one you have).
+  2. Upload ALL the files from this folder.
+  3. Repo Settings -> Pages -> Branch: main, folder: / (root) -> Save.
+  4. Wait about a minute. GitHub gives you a link like:
+        https://YOURNAME.github.io/REPONAME/
+  5. Share that link. Done!
+
+OPTION 2 - Netlify Drop  (drag and drop, super fast)
+  1. Go to:  app.netlify.com/drop
+  2. Drag this WHOLE folder onto the page.
+  3. It gives you a link you can copy and share.
+
+
+QUICK WAY (no website, just the files)
+--------------------------------------
+  - Put the .zip in Google Drive or Dropbox.
+  - Right-click -> Share -> "Anyone with the link."
+  - People download it, unzip it, and double-click index.html.
+  (This works, but a real link from Option 1 or 2 looks nicer.)
+
+
+FOR YOUR LINKEDIN POST
+----------------------
+  - Once it's online, paste the link where the post says [link].
+  - Tip: put the link in the FIRST COMMENT, not the post itself.
+    LinkedIn shows posts to MORE people when the link isn't in the
+    main text.
+  - Add a screenshot (the "Three Looks" picture, or Anakin lit up
+    in the Forge) so people stop scrolling.
+
+
+May the Force be with you.
