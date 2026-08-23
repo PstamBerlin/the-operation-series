@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIND YOUR BUILD · THE OPERATION SERIES</title>
+<meta name="description" content="Answer 4 quick questions and get matched to your perfect Star Wars cosplay build from the Operation Series.">
+<meta property="og:title" content="FIND YOUR BUILD · The Operation Series">
+<meta property="og:description" content="Answer 4 questions, get matched to your perfect Star Wars cosplay build.">
+<meta property="og:image" content="social-card.png">
+<link rel="icon" type="image/png" href="social-card.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#c8102e;--bg:#050303;--card:#0d0808;--line:#2a1a1d;--text:#e6e0e0;--dim:#8a8284;--gold:#d4a017;--ac:#c8102e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;min-height:100vh;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(200,16,46,.07),transparent 60%),#050303}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header{text-align:center;padding:46px 0 10px}
+.kick{font-family:'Share Tech Mono',monospace;color:var(--red);letter-spacing:5px;font-size:11px}
+h1{font-family:'Audiowide',sans-serif;font-size:clamp(30px,6vw,56px);color:#fff;letter-spacing:1px;margin:12px 0 6px}
+.tag{color:var(--dim);font-size:17px}
+.dots{display:flex;gap:8px;justify-content:center;margin:26px 0}
+.dot{width:34px;height:4px;border-radius:2px;background:var(--line);transition:.3s}
+.dot.on{background:var(--red)}.dot.done{background:#4a8a4a}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 26px;margin:0 auto 40px;max-width:680px}
+.q{font-family:'Audiowide',sans-serif;font-size:22px;color:#fff;text-align:center;margin-bottom:6px;letter-spacing:.5px}
+.qsub{text-align:center;color:var(--dim);font-size:15px;margin-bottom:22px}
+.opts{display:grid;gap:12px}
+.opt{display:flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--line);
+  border-radius:7px;padding:16px 18px;cursor:pointer;transition:.18s;text-align:left;font-family:inherit;color:inherit;width:100%}
+.opt:hover{border-color:var(--red);border-left-color:var(--red);transform:translateX(3px)}
+.opt .ic{font-size:24px;width:30px;text-align:center}
+.opt .ot{font-weight:700;font-size:17px;color:#fff}
+.opt .od{font-size:13px;color:var(--dim)}
+.back{display:block;margin:18px auto 0;background:none;border:none;color:var(--dim);font-family:'Share Tech Mono',monospace;
+  font-size:11px;letter-spacing:2px;cursor:pointer}.back:hover{color:var(--red)}
+/* result */
+.result{display:none;animation:rise .5s ease}
+.result.show{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.rlabel{font-family:'Share Tech Mono',monospace;color:var(--ac);letter-spacing:4px;font-size:11px;text-align:center}
+.rname{font-family:'Audiowide',sans-serif;font-size:clamp(34px,8vw,72px);color:var(--ac);text-align:center;letter-spacing:1px;
+  margin:8px 0;text-shadow:0 0 40px color-mix(in srgb,var(--ac) 40%,transparent)}
+.rfaction{text-align:center;font-family:'Share Tech Mono',monospace;color:var(--dim);letter-spacing:2px;font-size:12px;text-transform:uppercase}
+.rwhy{background:rgba(212,160,23,.08);border-left:4px solid var(--gold);border-radius:4px;padding:14px 18px;margin:22px 0;font-size:15px;line-height:1.55}
+.rwhy b{color:var(--gold)}
+.rstats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.rstat{border-left:2px solid var(--ac);padding-left:12px}
+.rstat .v{font-family:'Audiowide',sans-serif;font-size:20px;color:#fff}
+.rstat .l{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-top:2px}
+.rbtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.rbtn{flex:1;min-width:140px;text-align:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:15px;letter-spacing:1px;
+  text-transform:uppercase;padding:13px;border-radius:6px;border:1px solid var(--ac);color:var(--ac);transition:.2s}
+.rbtn:hover{background:var(--ac);color:#000}.rbtn.solid{background:var(--ac);color:#000}
+.alts{margin-top:30px;border-top:1px solid var(--line);padding-top:20px}
+.alts h3{font-family:'Share Tech Mono',monospace;color:var(--dim);letter-spacing:3px;font-size:11px;margin-bottom:12px;text-align:center}
+.altrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.alt{background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--a2);border-radius:6px;padding:10px 16px;cursor:pointer;transition:.18s}
+.alt:hover{border-color:var(--a2)}
+.alt .an{font-family:'Audiowide',sans-serif;font-size:15px;color:#fff}.alt .af{font-size:11px;color:var(--dim);font-family:'Share Tech Mono',monospace}
+.restart{display:block;margin:26px auto 50px;background:none;border:1px solid var(--line);color:var(--dim);
+  font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;padding:11px 22px;border-radius:20px;cursor:pointer}
+.restart:hover{border-color:var(--red);color:var(--red)}
+.home{text-align:center;padding:0 0 40px}.home a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--dim)}
+.home a:hover{color:var(--red)}
+</style></head><body>
+<header><div class="wrap"><div class="kick">STAR WARS COSPLAY · BUILD MATCHER</div>
+<h1>FIND YOUR BUILD</h1><p class="tag">Four quick questions. We'll match you to your perfect build from all 46.</p></div></header>
+<div class="wrap">
+<div class="dots" id="dots"></div>
+<div class="card" id="quizCard"></div>
+<div class="card result" id="result"></div>
+<div class="home"><a href="index.html">← back to The Operation Series</a></div>
+</div>
+<script>
+var CHARS=[{"key": "vader", "name": "Vader", "faction": "Sith Lord", "ac": "#c8102e", "side": "dark", "type": "armor", "budget": 250, "weeks": 16, "diff": 3, "pneed": "big", "desc": "From zero to Sith Lord. Full 3D-printed armour build — the hard-mode classic.", "quote": "I am your father.", "parts": "12 components"}, {"key": "anakin", "name": "Anakin", "faction": "Jedi Knight", "ac": "#2b7fff", "side": "light", "type": "cloth", "budget": 290, "weeks": 8, "diff": 2, "pneed": "low", "desc": "Three looks in one: Episode III, Clone Wars, Ahsoka. Cloth-and-saber: simple to start, intermediate for full screen accuracy.", "quote": "This is where the fun begins.", "parts": "Cloth + saber"}, {"key": "trooper", "name": "Trooper", "faction": "Clone / Stormtrooper", "ac": "#d7dde6", "side": "neutral", "type": "armor", "budget": 350, "weeks": 8, "diff": 3, "pneed": "big", "desc": "One build, two troopers: Clone & Stormtrooper. Full-body white armour — the big one.", "quote": "These aren't the droids you're looking for.", "parts": "Full armour"}, {"key": "luke", "name": "Luke", "faction": "Jedi Knight", "ac": "#3fae5a", "side": "light", "type": "cloth", "budget": 110, "weeks": 4, "diff": 1, "pneed": "low", "desc": "The black Jedi, two looks: Return of the Jedi & Book of Boba Fett. The easiest build.", "quote": "I am a Jedi, like my father before me.", "parts": "Cloth + saber"}, {"key": "kylo", "name": "Kylo", "faction": "Knights of Ren / First Order", "ac": "#d42b2b", "side": "dark", "type": "cloth", "budget": 140, "weeks": 6, "diff": 2, "pneed": "low", "desc": "Vader's grandson, three looks: masked, unmasked & the cracked Rise of Skywalker mask.", "quote": "Let the past die.", "parts": "Cloth + helmet"}, {"key": "mando", "name": "Mando", "faction": "Bounty Hunter", "ac": "#c8ccd2", "side": "neutral", "type": "armor", "budget": 300, "weeks": 8, "diff": 3, "pneed": "big", "desc": "Din Djarin, two looks: early weathered armour & full shiny beskar. T-visor helmet build.", "quote": "This is the Way.", "parts": "Armour + helmet"}, {"key": "boba", "name": "Boba", "faction": "Bounty Hunter", "ac": "#6f9a45", "side": "neutral", "type": "armor", "budget": 300, "weeks": 8, "diff": 3, "pneed": "big", "desc": "The original bounty hunter, two looks: Empire & Jedi. Weathered green armour + jetpack.", "quote": "He's no good to me dead.", "parts": "Armour + jetpack"}, {"key": "obiwan", "name": "Obi-Wan", "faction": "Jedi Master", "ac": "#b8915a", "side": "light", "type": "cloth", "budget": 110, "weeks": 4, "diff": 1, "pneed": "low", "desc": "The Negotiator, three looks: Attack of the Clones, Revenge of the Sith & Clone Wars.", "quote": "Hello there.", "parts": "Cloth + saber"}, {"key": "ahsoka", "name": "Ahsoka", "faction": "Former Jedi", "ac": "#e0833a", "side": "light", "type": "cloth", "budget": 110, "weeks": 5, "diff": 1, "pneed": "low", "desc": "Snips, three looks: Clone Wars, Rebels & live-action. Montrals & lekku headpiece + dual sabers.", "quote": "I am no Jedi.", "parts": "Craft + paint"}, {"key": "maul", "name": "Maul", "faction": "Sith Apprentice", "ac": "#c0392b", "side": "dark", "type": "cloth", "budget": 120, "weeks": 5, "diff": 1, "pneed": "low", "desc": "The Sith apprentice, two looks: Phantom Menace & Clone Wars robot legs. Red & black face + double saber.", "quote": "At last we will have revenge.", "parts": "Makeup + robes"}, {"key": "rey", "name": "Rey", "faction": "Jedi / Scavenger", "ac": "#c2a878", "side": "light", "type": "cloth", "budget": 100, "weeks": 4, "diff": 1, "pneed": "low", "desc": "Scavenger to Jedi, three looks: Force Awakens, Last Jedi & the white Rise of Skywalker.", "quote": "The garbage will do.", "parts": "Cloth + wraps"}, {"key": "han", "name": "Han", "faction": "Smuggler / Rebel", "ac": "#a08060", "side": "neutral", "type": "cloth", "budget": 140, "weeks": 3, "diff": 2, "pneed": "low", "desc": "The smuggler captain, three looks: A New Hope, Empire Strikes Back & Hoth. Vest, striped trousers & the DL-44 blaster.", "quote": "Never tell me the odds.", "parts": "Cloth + blaster"}, {"key": "leia", "name": "Leia", "faction": "Princess / Rebel", "ac": "#e8e3d5", "side": "neutral", "type": "cloth", "budget": 130, "weeks": 4, "diff": 1, "pneed": "low", "desc": "The Princess, three looks: classic ANH white gown, Hoth snowsuit & Endor camo. The side buns are the icon.", "quote": "Help me, Obi-Wan Kenobi. You're my only hope.", "parts": "Cloth + buns"}, {"key": "grievous", "name": "Grievous", "faction": "Separatist General", "ac": "#9aa8a8", "side": "dark", "type": "cloth", "budget": 180, "weeks": 6, "diff": 3, "pneed": "low", "desc": "The four-armed cyborg general. Printed head, hooded cloak, the extra-arms rig & a collection of stolen sabers. The hardest build.", "quote": "General Kenobi. You are a bold one.", "parts": "Print + robes + 2-4 sabers"}, {"key": "bokatan", "name": "Bo-Katan", "faction": "Nite Owl / Mandalorian", "ac": "#3b6b9f", "side": "neutral", "type": "armor", "budget": 300, "weeks": 8, "diff": 3, "pneed": "big", "desc": "The Mandalorian warrior queen, two looks: classic Nite Owl & live-action. Blue-and-grey armour with the Nite Owl sigil & twin blasters.", "quote": "Some of us serve a higher purpose.", "parts": "Blue Mandalorian armour"}, {"key": "aayla", "name": "Aayla", "faction": "Twi'lek Jedi Master", "ac": "#6ba4d6", "side": "light", "type": "cloth", "budget": 150, "weeks": 5, "diff": 2, "pneed": "low", "desc": "The Twi'lek Jedi, two looks: AOTC and Clone Wars. Muted medium-blue (teal-leaning) skin, leather halter, two long lekku.", "quote": "Don't lose a thousand lives just to save one.", "parts": "Cloth + makeup + lekku"}, {"key": "phasma", "name": "Phasma", "faction": "First Order Captain", "ac": "#8a96a4", "side": "neutral", "type": "armor", "budget": 350, "weeks": 8, "diff": 3, "pneed": "big", "desc": "The chrome Stormtrooper commander with the red-striped black cape. The hardest finish in the line.", "quote": "My troops will storm this block and kill you all.", "parts": "Chrome armour + cape"}, {"key": "dooku", "name": "Dooku", "faction": "Sith Lord", "ac": "#5e3a3a", "side": "dark", "type": "cloth", "budget": 120, "weeks": 4, "diff": 1, "pneed": "low", "desc": "The Count of Serenno — high collar, white hair and beard, the iconic curved-hilt red lightsaber.", "quote": "I have become more powerful than any Jedi.", "parts": "Cloth + curved saber"}, {"key": "royalguard", "name": "Royal Guard", "faction": "Imperial Sentinel", "ac": "#d9352e", "side": "neutral", "type": "armor", "budget": 200, "weeks": 6, "diff": 3, "pneed": "big", "desc": "The Emperor's silent crimson guards. Head-to-toe red robes, tinted-visor helmet, force pike.", "quote": "(silent — duty above all)", "parts": "Red robes + helmet + force pike"}, {"key": "jango", "name": "Jango", "faction": "Original Mandalorian", "ac": "#2c4b6e", "side": "neutral", "type": "armor", "budget": 320, "weeks": 8, "diff": 3, "pneed": "big", "desc": "Boba’s father — the original Mandalorian. Navy + silver armour (clean, unweathered) with twin WESTAR-34 blasters.", "quote": "I'm just a simple man trying to make my way in the universe.", "parts": "Navy Mando armour"}, {"key": "padme", "name": "Padmé", "faction": "Queen / Senator", "ac": "#c9a85e", "side": "neutral", "type": "cloth", "budget": 250, "weeks": 6, "diff": 2, "pneed": "low", "desc": "Three looks: the red Queen throne gown, the white Geonosis battle outfit, and the Senator robes.", "quote": "So this is how liberty dies... with thunderous applause.", "parts": "Cloth + headdress + makeup"}, {"key": "nihilus", "name": "Nihilus", "faction": "Sith Lord (KOTOR II)", "ac": "#b8a890", "side": "dark", "type": "cloth", "budget": 150, "weeks": 5, "diff": 2, "pneed": "low", "desc": "The Lord of Hunger. The white death mask, tattered black robes, red blade. One of the most distinctive Sith looks.", "quote": "(speaks no words — only hunger)", "parts": "Death mask + tattered robes"}, {"key": "palpatine", "name": "Palpatine", "faction": "The Emperor", "ac": "#d4b834", "side": "dark", "type": "cloth", "budget": 80, "weeks": 3, "diff": 1, "pneed": "low", "desc": "The Sith Master. The easiest build in the line: deep hooded robe + makeup + Force lightning. Hidden face is the menace.", "quote": "Unlimited POWER!", "parts": "Cloth (the easiest build)"}, {"key": "rex", "name": "Captain Rex", "faction": "501st Clone Captain", "ac": "#1e4d80", "side": "neutral", "type": "armor", "budget": 300, "weeks": 8, "diff": 3, "pneed": "big", "desc": "Anakin’s right hand. Phase II Clone armour with 501st blue stripes, the Kama skirt, and twin DC-17 pistols.", "quote": "In my book, experience outranks everything.", "parts": "Clone armour with 501st blue markings"}, {"key": "ventress", "name": "Ventress", "faction": "Nightsister Assassin", "ac": "#ddd0c0", "side": "dark", "type": "cloth", "budget": 160, "weeks": 5, "diff": 2, "pneed": "low", "desc": "Dooku’s apprentice, bald and pale, with twin curved red sabers. Heavy on makeup and leather.", "quote": "The Jedi shall fall.", "parts": "Cloth + makeup + twin curved sabers"}, {"key": "k2so", "name": "K-2SO", "faction": "Rebel Droid (Andor / Rogue One)", "ac": "#4a5358", "side": "neutral", "type": "armor", "budget": 250, "weeks": 6, "diff": 3, "pneed": "big", "desc": "The reprogrammed Imperial droid. Tall, skeletal, dryly hilarious. Charcoal body + glowing white eyes.", "quote": "Congratulations. You are being rescued.", "parts": "Tall droid suit + head"}, {"key": "ig11", "name": "IG-11", "faction": "Mandalorian-Era Droid", "ac": "#a5acb3", "side": "neutral", "type": "armor", "budget": 280, "weeks": 6, "diff": 3, "pneed": "big", "desc": "The nurse droid. Thin metal cylinder body, narrow domed head with the red LED ring, dual-wielded DLT-20A + E-11 rifles.", "quote": "I am no longer a hunter. I am a nurse droid.", "parts": "Tall droid suit + bare metal head"}, {"key": "cadbane", "name": "Cad Bane", "faction": "Duros Bounty Hunter", "ac": "#4a9eab", "side": "neutral", "type": "cloth", "budget": 150, "weeks": 5, "diff": 2, "pneed": "low", "desc": "The cool one in the hat. Blue Duros skin, wide-brim hat, breathing tubes from chin to coat, twin LL-30s.", "quote": "I'm your worst nightmare, pal.", "parts": "Cloth + makeup + hat + breathing tubes"}, {"key": "armorer", "name": "Armorer", "faction": "Mandalorian Smith", "ac": "#c4753a", "side": "neutral", "type": "armor", "budget": 350, "weeks": 8, "diff": 3, "pneed": "big", "desc": "Keeper of the forge. Bronze horned helmet, heavy leather smith’s apron over Mando armour, hammer and tongs.", "quote": "A foundling is in your care.", "parts": "Bronze Mandalorian armour + apron + tools"}, {"key": "sabine", "name": "Sabine", "faction": "Rebel Mandalorian", "ac": "#7a5dbc", "side": "neutral", "type": "armor", "budget": 280, "weeks": 7, "diff": 3, "pneed": "big", "desc": "Mandalorian artist. Paint it YOUR way — colourful graffiti armour with twin WESTAR-35 pistols. The most personal build.", "quote": "Forget the explosion. Look at the color.", "parts": "Painted Mandalorian armour + twin pistols"}, {"key": "hera", "name": "Hera", "faction": "Twi'lek Rebel Pilot", "ac": "#5a8a55", "side": "neutral", "type": "cloth", "budget": 140, "weeks": 4, "diff": 2, "pneed": "low", "desc": "Captain of the Ghost. Light green Twi'lek skin, gold/tan rebel flight suit, the iconic off-white pilot cap and goggles over lekku.", "quote": "We have hope; hope that things can get better. And they will.", "parts": "Cloth + makeup + lekku"}, {"key": "revan", "name": "Revan", "faction": "Old Republic Sith/Jedi (KOTOR)", "ac": "#7a1f24", "side": "dark", "type": "cloth", "budget": 200, "weeks": 7, "diff": 2, "pneed": "low", "desc": "The legendary Prodigal Knight. Weathered grey-and-rust-red Mandalorian mask, dark red hooded robes over a cuirass, Old Republic red saber. Pairs with Nihilus.", "quote": "I am Revan reborn. And before me you are nothing.", "parts": "Mandalorian mask + red robes + saber"}, {"key": "plokoon", "name": "Plo Koon", "faction": "Kel Dor Jedi Master", "ac": "#a84e2e", "side": "light", "type": "cloth", "budget": 160, "weeks": 5, "diff": 2, "pneed": "low", "desc": "The Kel Dor with the breath mask + goggles. Orange skin, blue saber, fingertip claws. The Jedi who found Ahsoka.", "quote": "When you ask for trouble, you should not be surprised when it finds you.", "parts": "Jedi robes + antiox mask"}, {"key": "kitfisto", "name": "Kit Fisto", "faction": "Nautolan Jedi Master", "ac": "#3d9b7a", "side": "light", "type": "cloth", "budget": 170, "weeks": 5, "diff": 2, "pneed": "low", "desc": "The smiling green Nautolan with 14 head-tentacles, big black eyes, and a green blade.", "quote": "Revenge is not the Jedi way!", "parts": "Green skin + head-tentacles + green saber"}, {"key": "bastila", "name": "Bastila Shan", "faction": "KOTOR Jedi Prodigy", "ac": "#e0cc52", "side": "light", "type": "cloth", "budget": 180, "weeks": 6, "diff": 2, "pneed": "low", "desc": "The KOTOR-era Jedi prodigy. High-collared rust / burnt-orange robe-dress, the iconic gold-ringed ponytails, the rare YELLOW double-blade.", "quote": "The Force fights with me!", "parts": "Rust robe-dress + double saber + ringed ponytails"}, {"key": "malak", "name": "Darth Malak", "faction": "KOTOR Dark Lord", "ac": "#6a7480", "side": "dark", "type": "armor", "budget": 220, "weeks": 7, "diff": 3, "pneed": "big", "desc": "Revan's former apprentice. Bald, with the iconic grey cybernetic LOWER JAW plate tied into a neck ring. Heavy burgundy Old Republic Sith armour over a ribbed maroon tunic, red saber.", "quote": "The Star Forge... it hungers. And it can feed on the dark side that is within all of us.", "parts": "Sith armour + metal jaw + red saber"}, {"key": "mae", "name": "Mae", "faction": "High Republic Assassin (Acolyte)", "ac": "#9c3848", "side": "dark", "type": "cloth", "budget": 120, "weeks": 4, "diff": 1, "pneed": "low", "desc": "The assassin Acolyte. Purple patchwork cloak, half-mask, concealed throwing knives — no lightsaber. Hunts Jedi unseen.", "quote": "I'm going to kill a Jedi without a weapon.", "parts": "Dark assassin outfit + hood"}, {"key": "sol", "name": "Sol", "faction": "High Republic Jedi Master (Acolyte)", "ac": "#8a7340", "side": "light", "type": "cloth", "budget": 150, "weeks": 5, "diff": 2, "pneed": "low", "desc": "The wise Jedi Master from the High Republic. White-and-gold layered temple robes, blue lightsaber, calm bearing.", "quote": "Your eyes can deceive you. We must not trust them.", "parts": "High Republic Jedi robes"}, {"key": "qimir", "name": "Qimir", "faction": "The Stranger (Acolyte)", "ac": "#5a5560", "side": "dark", "type": "cloth", "budget": 200, "weeks": 6, "diff": 2, "pneed": "low", "desc": "The secret Sith. The distinctive cortosis HELMET — a grinning grille of exposed metal teeth and a narrow eye slit, in dark weathered metal — plus dark layered robes and a crackling red blade.", "quote": "Freedom to wield my power the way I like.", "parts": "Cortosis helmet + dark robes + red saber"}, {"key": "poe", "name": "Poe Dameron", "faction": "Resistance Pilot", "ac": "#7a4a2e", "side": "neutral", "type": "cloth", "budget": 160, "weeks": 4, "diff": 2, "pneed": "low", "desc": "The Resistance’s best pilot. Two looks: the worn brown leather jacket + tan henley, or the orange X-wing flight suit.", "quote": "We are the spark that'll light the fire that'll burn the First Order down.", "parts": "Flight jacket or pilot flight suit"}, {"key": "inquisitor", "name": "Grand Inquisitor", "faction": "Imperial Inquisitorius", "ac": "#9a1f1f", "side": "dark", "type": "armor", "budget": 210, "weeks": 7, "diff": 3, "pneed": "big", "desc": "The Empire's chief Jedi-hunter. A gaunt pale Pau'an face with glowing yellow eyes and red markings, sleek black armour, and the iconic spinning double-bladed red saber.", "quote": "You have no idea what you've unleashed here today.", "parts": "Pau'an makeup + black armour + spinning saber"}, {"key": "thrawn", "name": "Thrawn", "faction": "Grand Admiral", "ac": "#5fa8d3", "side": "neutral", "type": "cloth", "budget": 120, "weeks": 4, "diff": 1, "pneed": "low", "desc": "The blue-skinned Chiss tactician. No armour, no saber — a crisp white admiral’s uniform, blue skin and glowing red eyes. A makeup-and-tailoring build.", "quote": "To defeat an enemy, you must know them.", "parts": "Uniform + makeup"}, {"key": "cal", "name": "Cal Kestis", "faction": "Jedi Knight", "ac": "#e07b3e", "side": "light", "type": "cloth", "budget": 120, "weeks": 4, "diff": 1, "pneed": "some", "desc": "The Padawan who survived, two looks: the Fallen Order poncho & the Survivor jacket. The most beginner-friendly Jedi build.", "quote": "I'm a Jedi Knight.", "parts": "Cloth + wraps + BD-1"}, {"key": "chewie", "name": "Chewbacca", "faction": "Rebel Alliance", "ac": "#7a4a28", "side": "light", "type": "cloth", "budget": 420, "weeks": 8, "diff": 3, "pneed": "some", "desc": "The roster's first fursuit — a head-to-toe fur build with bandolier and bowcaster.", "quote": "RRRRGH-GHHHHHRRRR-AAARRRWHHGGWWWW. (Wookiee for \"let's go.\")", "parts": "12 components"}, {"key": "mace", "name": "Mace Windu", "faction": "Jedi Master", "ac": "#7b4ea8", "side": "light", "type": "cloth", "budget": 130, "weeks": 4, "diff": 1, "pneed": "none", "desc": "The senior Jedi on the Council: dark layered robes, a heavy hooded cloak, a bald head, and the only purple saber in the films.", "quote": "This party's over.", "parts": "Dark robes + purple saber"}, {"key": "finn", "name": "Finn", "faction": "Resistance", "ac": "#b5793a", "side": "light", "type": "cloth", "budget": 130, "weeks": 4, "diff": 1, "pneed": "none", "desc": "The stormtrooper who defected, two looks: Poe's tan leather jacket over a grey-blue henley, or the FN-2187 armour with the bloody handprint. One of the most beginner-friendly closet-cosplay builds on the roster.", "quote": "That's not what I'm about.", "parts": "Leather jacket + henley + saber"}];
+var Q=[
+ {k:'side',q:'Pick your allegiance',sub:'Who do you want to be?',opts:[
+   {v:'light',ic:'🔵',t:'Light side',d:'Jedi & heroes'},
+   {v:'dark',ic:'🔴',t:'Dark side',d:'Sith & villains'},
+   {v:'neutral',ic:'⚙️',t:'Soldiers & hunters',d:'Troopers, Mandalorians, bounty hunters, droids'},
+   {v:'any',ic:'✨',t:'Surprise me',d:'No preference'} ]},
+ {k:'budget',q:"What's your budget?",sub:'Roughly, all-in.',opts:[
+   {v:'tight',ic:'💸',t:'Tight',d:'Under €120'},
+   {v:'mid',ic:'💰',t:'Medium',d:'€120 – €350'},
+   {v:'big',ic:'🏦',t:'Go big',d:'€350+'},
+   {v:'any',ic:'🤷',t:"Doesn't matter",d:'Money is no object'} ]},
+ {k:'exp',q:'Built a costume before?',sub:'Be honest — it picks the right difficulty.',opts:[
+   {v:'first',ic:'🌱',t:'First time ever',d:'Total beginner'},
+   {v:'some',ic:'🔧',t:'A little',d:"Done a piece or two"},
+   {v:'pro',ic:'🛠️',t:'Experienced',d:'Bring on the hard mode'} ]},
+ {k:'printer',q:'Your making setup?',sub:'What can you actually produce?',opts:[
+   {v:'none',ic:'🧵',t:'No 3D printer',d:'Cloth & makeup only'},
+   {v:'small',ic:'🖨️',t:'Small printer',d:"I can print, splitting is a pain"},
+   {v:'big',ic:'🏭',t:'Big printer',d:"Or happy to split, sand & grind"} ]}
+];
+var step=0, ans={};
+var dots=document.getElementById('dots'), card=document.getElementById('quizCard'), result=document.getElementById('result');
+function renderDots(){dots.innerHTML=Q.map(function(_,i){return '<div class="dot '+(i<step?'done':(i===step?'on':''))+'"></div>';}).join('')+'<div class="dot '+(step>=Q.length?'on':'')+'"></div>';}
+function renderStep(){
+  renderDots();
+  if(step>=Q.length){showResult();return;}
+  var s=Q[step];
+  card.style.display='block'; result.classList.remove('show');
+  card.innerHTML='<div class="q">'+s.q+'</div><div class="qsub">'+s.sub+'</div><div class="opts">'+
+    s.opts.map(function(o,i){return '<button class="opt" data-v="'+o.v+'"><span class="ic">'+o.ic+'</span><span><span class="ot">'+o.t+'</span><br><span class="od">'+o.d+'</span></span></button>';}).join('')+
+    '</div>'+(step>0?'<button class="back" id="bk">‹ back</button>':'');
+  [].slice.call(card.querySelectorAll('.opt')).forEach(function(b){b.addEventListener('click',function(){ans[s.k]=b.getAttribute('data-v');step++;renderStep();});});
+  var bk=document.getElementById('bk'); if(bk)bk.addEventListener('click',function(){step--;renderStep();});
+}
+function score(c){
+  var s=0, why=[];
+  // side
+  if(ans.side!=='any'){ if(c.side===ans.side){s+=120; why.push('side');} else {s-=70;} }
+  // budget
+  var targ={tight:100,mid:235,big:360}[ans.budget];
+  if(ans.budget!=='any'){
+    var over=c.budget-targ;
+    s+= 60 - Math.abs(over)/5;
+    if(ans.budget==='tight' && c.budget>140) s-=90;
+    if(ans.budget==='big' && c.budget>=300) {s+=25; why.push('budget');}
+    if(ans.budget==='tight' && c.budget<=120){s+=25; why.push('budget');}
+    if(ans.budget==='mid' && c.budget>=120 && c.budget<=350){s+=20; why.push('budget');}
+  }
+  // experience -> difficulty
+  var want={first:1,some:2,pro:3}[ans.exp];
+  s+= 50 - Math.abs(c.diff-want)*45;
+  if(c.diff===want) why.push('exp');
+  // printer
+  if(ans.printer==='none'){ if(c.type==='cloth'){s+=90;why.push('printer');} else {s-=140;} }
+  else if(ans.printer==='small'){ if(c.type==='cloth'){s+=40;} else {s-=35;} }
+  else { if(c.type==='armor'){s+=45;why.push('printer');} }
+  s += Math.random()*8; // tiny tiebreak
+  return {s:s, why:why};
+}
+function whyText(c,why){
+  var bits=[];
+  if(why.indexOf('side')>=0) bits.push(c.side==='light'?'a light-side hero':(c.side==='dark'?'a proper dark-side villain':'an armor/soldier build'));
+  if(why.indexOf('printer')>=0) bits.push(c.type==='cloth'?'mostly cloth & makeup — little to no printing':'a meaty 3D-print build for your setup');
+  if(why.indexOf('exp')>=0) bits.push(c.diff===1?'beginner-friendly':(c.diff===3?'a real challenge':'a solid step-up'));
+  if(why.indexOf('budget')>=0) bits.push('right in your budget');
+  if(!bits.length) bits.push('the closest match to what you picked');
+  return bits.join(', ');
+}
+function pubPdf(k){return k==='vader'?'manual_public.pdf':k+'_public.pdf';}
+function showResult(){
+  card.style.display='none';
+  var ranked=CHARS.map(function(c){var r=score(c);return {c:c,s:r.s,why:r.why};}).sort(function(a,b){return b.s-a.s;});
+  var top=ranked[0], alts=ranked.slice(1,4);
+  var c=top.c;
+  document.documentElement.style.setProperty('--ac',c.ac);
+  result.style.setProperty('--ac',c.ac);
+  result.innerHTML=
+   '<div class="rlabel">▌ YOUR MATCH</div>'+
+   '<div class="rname">'+c.name.toUpperCase()+'</div>'+
+   '<div class="rfaction">'+c.faction+'</div>'+
+   '<div class="rwhy"><b>Why this fits you:</b> '+c.name+' is '+whyText(c,top.why)+'. '+(c.quote?'<i>“'+c.quote+'”</i>':'')+'</div>'+
+   '<div class="rstats">'+
+     '<div class="rstat"><div class="v">€'+c.budget+'+</div><div class="l">Budget</div></div>'+
+     '<div class="rstat"><div class="v">~'+c.weeks+'w</div><div class="l">Build time</div></div>'+
+     '<div class="rstat"><div class="v">'+['','Beginner','Medium','Advanced'][c.diff]+'</div><div class="l">Difficulty</div></div>'+
+   '</div>'+
+   '<div class="rbtns">'+
+     '<a class="rbtn solid" href="index.html?c='+c.key+'">▶ Build it on site</a>'+
+     '<a class="rbtn" href="'+pubPdf(c.key)+'" target="_blank" rel="noopener">Read the manual</a>'+
+     '<a class="rbtn" href="checklist.html?c='+c.key+'" target="_blank" rel="noopener">Parts checklist</a>'+
+   '</div>'+
+   '<div class="alts"><h3>▌ ALSO A GREAT FIT</h3><div class="altrow">'+
+     alts.map(function(a){return '<a class="alt" style="--a2:'+a.c.ac+'" href="index.html?c='+a.c.key+'"><div class="an">'+a.c.name+'</div><div class="af">'+a.c.faction+'</div></a>';}).join('')+
+   '</div></div>'+
+   '<button class="restart" id="rs">↻ start over</button>';
+  result.classList.add('show');
+  document.getElementById('rs').addEventListener('click',function(){step=0;ans={};document.documentElement.style.setProperty('--ac','#c8102e');renderStep();window.scrollTo({top:0,behavior:'smooth'});});
+  result.scrollIntoView({behavior:'smooth',block:'start'});
+}
+renderStep();
+</script></body></html>

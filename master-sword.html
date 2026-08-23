@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>◆ The Master Sword — a hidden build</title>
+<meta name="description" content="A secret build guide for a full-scale 3D-printed Legend of Zelda Master Sword. Hidden inside The Operation Series.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070c0a; --panel:#0e1613; --line:#1f3129; --gold:#e6c15a; --gold2:#b8912f;
+  --sacred:#8fe3f0; --purple:#7d5aa8; --green:#3f7d5c; --text:#e8e6d6; --dim:#9fb0a4; --faint:#5f7268;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 8%, rgba(143,227,240,.10), transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 105%, rgba(63,125,92,.12), transparent 60%),
+    var(--bg);
+  color:var(--text); font-family:'Spectral',Georgia,serif; line-height:1.65; min-height:100vh;
+  background-attachment:fixed;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+a{color:inherit}
+::selection{background:rgba(230,193,90,.3)}
+
+/* ---- HERO ---- */
+header{text-align:center;padding:64px 0 30px;position:relative}
+.secret-note{font-family:'Cinzel',serif;letter-spacing:4px;font-size:11px;color:var(--sacred);
+  text-transform:uppercase;opacity:0;animation:fadeUp .9s ease .1s forwards}
+.triforce{margin:18px auto 8px;width:60px;height:54px;display:block;opacity:0;animation:fadeUp .9s ease .25s forwards}
+.triforce path{fill:var(--gold);filter:drop-shadow(0 0 10px rgba(230,193,90,.55))}
+h1{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(34px,7vw,68px);letter-spacing:2px;
+  color:#fff;text-shadow:0 0 26px rgba(143,227,240,.25);margin:6px 0 4px;opacity:0;animation:fadeUp .9s ease .35s forwards}
+h1 .the{display:block;font-size:.32em;letter-spacing:8px;color:var(--gold);margin-bottom:2px}
+.sub{color:var(--dim);font-style:italic;font-size:18px;max-width:560px;margin:10px auto 0;opacity:0;animation:fadeUp .9s ease .5s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---- SWORD ---- */
+.sword-stage{display:flex;justify-content:center;margin:26px 0 6px;perspective:900px}
+.sword{width:150px;height:auto;filter:drop-shadow(0 0 18px rgba(143,227,240,.35));animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0.001deg)}50%{transform:translateY(-10px)}}
+
+/* ---- BLOCKS ---- */
+.rule{background:linear-gradient(180deg,rgba(230,193,90,.08),transparent);border:1px solid var(--gold2);
+  border-radius:8px;padding:22px 26px;margin:34px 0;text-align:center}
+.rule .k{font-family:'Cinzel',serif;letter-spacing:3px;font-size:12px;color:var(--gold);text-transform:uppercase}
+.rule .v{font-size:20px;margin-top:8px;color:#fff}
+.rule .v b{color:var(--sacred)}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px 26px;margin:22px 0}
+.card .lbl{font-family:'Cinzel',serif;letter-spacing:3px;font-size:12px;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+h2{font-family:'Cinzel',serif;font-weight:700;font-size:26px;color:#fff;margin:44px 0 4px;letter-spacing:1px}
+h2::before{content:"◆ ";color:var(--gold);font-size:.7em;vertical-align:middle}
+.lead{color:var(--dim);font-style:italic;margin-bottom:14px}
+
+.model{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.model .mini{flex:0 0 64px}
+.model .info{flex:1;min-width:220px}
+.model .name{font-family:'Cinzel',serif;font-size:19px;color:#fff}
+.model .by{color:var(--dim);font-size:14px;margin:2px 0 10px}
+.model .by b{color:var(--gold)}
+.stars{color:var(--gold);letter-spacing:2px}
+.btn{display:inline-block;margin-top:12px;font-family:'Cinzel',serif;letter-spacing:2px;font-size:13px;
+  text-decoration:none;color:#0a0f0d;background:linear-gradient(180deg,var(--gold),var(--gold2));
+  padding:11px 20px;border-radius:6px;text-transform:uppercase;transition:.2s;box-shadow:0 0 0 rgba(230,193,90,0)}
+.btn:hover{box-shadow:0 0 22px rgba(230,193,90,.5);transform:translateY(-1px)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--dim)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px}
+.spec{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.spec .t{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;color:var(--faint);text-transform:uppercase}
+.spec .d{font-size:16px;color:var(--text);margin-top:3px}
+
+ol.steps{list-style:none;counter-reset:s;margin-top:8px}
+ol.steps li{counter-increment:s;position:relative;padding:12px 0 12px 52px;border-bottom:1px solid var(--line)}
+ol.steps li:last-child{border-bottom:none}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:10px;width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-weight:700;
+  color:var(--gold);border:1px solid var(--gold2);border-radius:50%;background:var(--bg)}
+ol.steps b{color:#fff}
+
+.palette{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.sw{display:flex;align-items:center;gap:9px;background:var(--bg);border:1px solid var(--line);
+  border-radius:20px;padding:6px 14px 6px 8px;font-size:14px}
+.sw i{width:18px;height:18px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.2)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;text-align:center;margin:8px 0}
+.stats .n{font-family:'Cinzel',serif;font-weight:900;font-size:30px;color:var(--gold)}
+.stats .l{font-size:12px;color:var(--dim);letter-spacing:1px}
+
+.disc{text-align:center;color:var(--faint);font-size:12.5px;font-style:italic;line-height:1.9;margin:44px 0 10px;border-top:1px solid var(--line);padding-top:26px}
+footer{text-align:center;padding:8px 0 60px}
+footer a{font-family:'Cinzel',serif;letter-spacing:3px;font-size:12px;color:var(--dim);text-decoration:none}
+footer a:hover{color:var(--gold)}
+.chime{color:var(--sacred);font-style:italic}
+
+/* ---- TIMELINE ---- */
+.timeline{margin-top:10px}
+.tl{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}
+.tl:last-child{border-bottom:none}
+.tl-sword{flex:0 0 36px;display:flex;justify-content:center;align-items:center}
+.ms-mini{width:38px;height:auto;filter:drop-shadow(0 0 5px rgba(143,227,240,.3))}
+.tl-y{flex:0 0 44px;font-family:'Cinzel',serif;font-weight:700;color:var(--gold);font-size:15px;text-align:right;border-right:2px solid var(--gold2);padding-right:14px;align-self:stretch;display:flex;align-items:center;justify-content:flex-end}
+.tl-b{flex:1;color:var(--dim)}
+.tl-b b{color:#fff}
+
+/* ---- PRINT / PDF ---- */
+@media print{
+  html,body{background:#080d0b !important}
+  body{background-image:none !important;background-attachment:scroll !important}
+  header{padding:24px 0 14px}
+  h1{text-shadow:none}
+  .secret-note,.triforce,h1,.sub{opacity:1 !important;transform:none !important;animation:none !important}
+  .sword{animation:none}
+  .card,.rule,.spec,.model,ol.steps li,.disc,.tl,.palette,.sword-stage{break-inside:avoid}
+  h2{break-after:avoid}
+  a{color:inherit}
+  .btn[download]{display:none}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="secret-note">♪ you found a secret</div>
+  <svg class="triforce" viewBox="0 0 60 54" aria-hidden="true">
+    <path d="M30 0 L45 26 L15 26 Z"/><path d="M15 28 L30 54 L0 54 Z"/><path d="M45 28 L60 54 L30 54 Z"/>
+  </svg>
+  <h1><span class="the">The Legend of</span>Master Sword</h1>
+  <p class="sub">The blade that seals the darkness. A hidden little build guide — tucked at the bottom of the Operation Series, because every good game has a secret.</p>
+
+  <div class="sword-stage">
+    <svg class="sword" viewBox="0 0 160 472" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ice" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#7fb9cd"/><stop offset=".5" stop-color="#effafd"/><stop offset="1" stop-color="#6fa8bd"/>
+        </linearGradient>
+        <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7275ba"/><stop offset="1" stop-color="#3b3e72"/>
+        </linearGradient>
+        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#b8912f"/><stop offset=".5" stop-color="#f6df8a"/><stop offset="1" stop-color="#8f6e1c"/>
+        </linearGradient>
+      </defs>
+      <!-- sacred glow -->
+      <line x1="80" y1="18" x2="80" y2="292" stroke="#8fe3f0" stroke-width="30" opacity=".06" stroke-linecap="round"/>
+      <line x1="80" y1="18" x2="80" y2="292" stroke="#8fe3f0" stroke-width="12" opacity=".08" stroke-linecap="round"/>
+      <!-- BLADE: ice-blue, long, ridged -->
+      <path d="M80 14 L88 106 L90 296 L70 296 L72 106 Z" fill="url(#ice)" stroke="#4d7f90" stroke-width="1.2"/>
+      <path d="M80 20 L88 106 L90 296 L80 294 Z" fill="#5f97ac" opacity=".28"/>
+      <line x1="80" y1="22" x2="80" y2="294" stroke="#ffffff" stroke-width="1.6" opacity=".7"/>
+      <!-- Triforce etched near the base -->
+      <g fill="#e6c15a" opacity=".9">
+        <path d="M80 252 L85 261 L75 261 Z"/><path d="M75 262 L80 271 L70 271 Z"/><path d="M85 262 L90 271 L80 271 Z"/>
+      </g>
+      <!-- WINGED GUARD: blue, swept wide and up -->
+      <path d="M73 302 L44 300 L16 300 L24 312 L32 307 L40 320 L48 313 L56 323 L66 312 L73 306 Z" fill="url(#wing)" stroke="#2e3160" stroke-width="1"/>
+      <path d="M87 302 L116 300 L144 300 L136 312 L128 307 L120 320 L112 313 L104 323 L94 312 L87 306 Z" fill="url(#wing)" stroke="#2e3160" stroke-width="1"/>
+      <path d="M70 304 L46 302 L28 302 L33 309 L39 306 L45 316 L52 311 L59 319 L67 310 L70 306 Z" fill="#6a6fc0" opacity=".5"/>
+      <path d="M90 304 L114 302 L132 302 L127 309 L121 306 L115 316 L108 311 L101 319 L93 310 L90 306 Z" fill="#6a6fc0" opacity=".5"/>
+      <path d="M73 302 L44 300 L16 300" fill="none" stroke="#c9a43a" stroke-width="1.1" opacity=".55"/>
+      <path d="M87 302 L116 300 L144 300" fill="none" stroke="#c9a43a" stroke-width="1.1" opacity=".55"/>
+      <path d="M62 306 L24 304 M60 312 L38 314" stroke="#2e3160" stroke-width="1.3" opacity=".7"/>
+      <path d="M98 306 L136 304 M100 312 L122 314" stroke="#2e3160" stroke-width="1.3" opacity=".7"/>
+      <!-- central guard block -->
+      <path d="M66 296 L94 296 L98 312 L80 330 L62 312 Z" fill="url(#wing)" stroke="#2e3160" stroke-width="1"/>
+      <!-- amber diamond gem -->
+      <path d="M80 300 L88 312 L80 324 L72 312 Z" fill="url(#gold)" stroke="#6f551a" stroke-width="1"/>
+      <path d="M80 304 L84 312 L80 320 L76 312 Z" fill="#f0b429"/>
+      <circle cx="78" cy="309" r="1.6" fill="#fff" opacity=".85"/>
+      <!-- gold side fittings -->
+      <rect x="60" y="324" width="6" height="9" rx="1.5" fill="url(#gold)"/>
+      <rect x="94" y="324" width="6" height="9" rx="1.5" fill="url(#gold)"/>
+      <!-- GRIP: blue rod with gold cross-wrap -->
+      <rect x="73" y="328" width="14" height="100" rx="6" fill="#484b88" stroke="#2e3160" stroke-width="1.4"/>
+      <path d="M74 336 L86 348 M74 350 L86 362 M74 364 L86 376 M74 378 L86 390 M74 392 L86 404 M74 406 L86 418" stroke="#e6c15a" stroke-width="2" opacity=".92"/>
+      <path d="M86 336 L74 348 M86 350 L74 362 M86 364 L74 376 M86 378 L74 390 M86 392 L74 404 M86 406 L74 418" stroke="#e6c15a" stroke-width="2" opacity=".92"/>
+      <!-- POMMEL: faceted blue gem -->
+      <path d="M80 428 L93 435 L93 449 L80 459 L67 449 L67 435 Z" fill="url(#wing)" stroke="#2e3160" stroke-width="1"/>
+      <path d="M80 428 L80 459 M67 435 L93 449 M93 435 L67 449" stroke="#2e3160" stroke-width="1" opacity=".55"/>
+      <path d="M80 428 L93 435 L80 442 L67 435 Z" fill="#8386c6" opacity=".5"/>
+    </svg>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+  <div class="rule">
+    <div class="k">▲ The One Rule ▲</div>
+    <div class="v">The secret isn't the printing — it's the <b>sanding.</b><br>Prime, sand, prime, sand… until every layer line disappears. Patience is what turns a print into a <span style="color:var(--sacred)">forged</span> blade.</div>
+  </div>
+
+  <div style="text-align:center;margin:2px 0 30px">
+    <a class="btn" href="master-sword.pdf" download style="font-size:14px">⬇ Download this whole guide as a PDF</a>
+  </div>
+
+  <h2>What You Need</h2>
+  <p class="lead">A short shopping list — cheap, and you'll reuse most of it on the next build.</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(168px,1fr))">
+    <div class="spec"><div class="t">Filament</div><div class="d">~470 g PLA</div></div>
+    <div class="spec"><div class="t">Glue</div><div class="d">Superglue or epoxy</div></div>
+    <div class="spec"><div class="t">Filler</div><div class="d">Bondo spot putty (seams)</div></div>
+    <div class="spec"><div class="t">Primer</div><div class="d">Filler primer, spray</div></div>
+    <div class="spec"><div class="t">Sandpaper</div><div class="d">120 · 220 · 400 · 800 · 1000</div></div>
+    <div class="spec"><div class="t">😷 Respirator</div><div class="d">sanding dust + spray fumes</div></div>
+    <div class="spec"><div class="t">Paint</div><div class="d">Silver · blue · gold spray</div></div>
+    <div class="spec"><div class="t">Clear coat</div><div class="d">Matte + a little gloss</div></div>
+    <div class="spec"><div class="t">Optional</div><div class="d">LED / backlit resin (the glow)</div></div>
+  </div>
+  <p style="color:var(--dim);font-size:14px;margin-top:12px">The <b style="color:var(--text)">respirator</b> is the one thing that isn't optional — sanding dust and primer/paint fumes are the real hazard here. Mask on, window open.</p>
+
+  <h2>The Models</h2>
+  <p class="lead">Someone already did the hard modelling — print theirs, it's free. Popandsicle's is the pick: it <b>snaps together</b> (barely any glue), the parts are split by colour, and it's one of the <b>lighter</b> full-scale prints. Most other Master Swords eat more plastic.</p>
+  <div class="card"><div class="model">
+    <svg class="mini" viewBox="0 0 60 54" aria-hidden="true"><path d="M30 2 L45 26 L15 26 Z" fill="#e6c15a"/><path d="M15 28 L30 52 L0 52 Z" fill="#e6c15a"/><path d="M45 28 L60 52 L30 52 Z" fill="#e6c15a"/></svg>
+    <div class="info">
+      <div class="name">★ Master Sword (BOTW / TOTK) — Full Scale</div>
+      <div class="by">by <b>Popandsicle</b> · Printables · <b style="color:var(--sacred)">~470 g</b> · no-support, snap-together, colour-split</div>
+      <div class="stars">★★★★★ <span style="color:var(--dim);font-style:italic">349 reviews — the one to print</span></div>
+      <div>
+        <a class="btn" href="https://www.printables.com/model/252630-legend-of-zelda-master-sword-botw-totk-full-scale" target="_blank" rel="noopener">Get it on Printables ↗</a>
+        <a class="btn ghost" href="https://www.printables.com/@Popandsicle" target="_blank" rel="noopener">Their profile ↗</a>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="lbl" style="margin:22px 0 8px;color:var(--gold)">◆ More options &amp; add-ons</div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+    <div class="spec"><div class="t">Popandsicle · matching sheath</div><div class="d"><a href="https://www.printables.com/model/358188-legend-of-zelda-master-sword-scabbard-botw-totk-fu" target="_blank" rel="noopener" style="color:var(--gold)">Full-scale Scabbard ↗</a></div></div>
+    <div class="spec"><div class="t">Popandsicle · display</div><div class="d"><a href="https://www.printables.com/model/505363-legend-of-zelda-master-sword-and-scabbard-wall-mou" target="_blank" rel="noopener" style="color:var(--gold)">Wall-mount ↗</a></div></div>
+    <div class="spec"><div class="t">ChelsCCT · Printables</div><div class="d"><a href="https://www.printables.com/model/13383-master-sword-full-size-legend-of-zelda" target="_blank" rel="noopener" style="color:var(--gold)">Full-size classic ↗</a></div></div>
+    <div class="spec"><div class="t">ChaosCoreTech · Thingiverse</div><div class="d"><a href="https://www.thingiverse.com/thing:1449187" target="_blank" rel="noopener" style="color:var(--gold)">Full-size (~500 g+) ↗</a></div></div>
+    <div class="spec"><div class="t">Browse everything</div><div class="d"><a href="https://www.yeggi.com/q/master+sword/" target="_blank" rel="noopener" style="color:var(--gold)">Yeggi ↗</a> · <a href="https://www.stlfinder.com/3dmodels/master-sword-botw/" target="_blank" rel="noopener" style="color:var(--gold)">STLFinder ↗</a></div></div>
+  </div>
+  <div class="lbl" style="margin:24px 0 8px;color:var(--sacred)">◆ MakerWorld — loads of amazing ones (with ready-to-print profiles)</div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+    <div class="spec"><div class="t">⚡ Lightening 100 cm</div><div class="d"><a href="https://makerworld.com/en/models/887552-lightening-zelda-master-sword-100cm" target="_blank" rel="noopener" style="color:var(--sacred)">motion LED + sound ↗</a></div></div>
+    <div class="spec"><div class="t">Master Sword V2.0 (TOTK)</div><div class="d"><a href="https://makerworld.com/en/models/17057-master-sword-v2-0-from-the-legend-of-zelda-tears-o" target="_blank" rel="noopener" style="color:var(--gold)">swappable blades ↗</a></div></div>
+    <div class="spec"><div class="t">BOTW · material-efficient</div><div class="d"><a href="https://makerworld.com/en/models/785840-the-legend-of-zelda-breath-of-the-wild-master-swor" target="_blank" rel="noopener" style="color:var(--gold)">less filament ↗</a></div></div>
+    <div class="spec"><div class="t">Browse MakerWorld</div><div class="d"><a href="https://makerworld.com/en/search/models?keyword=master%20sword" target="_blank" rel="noopener" style="color:var(--gold)">all Master Swords ↗</a></div></div>
+  </div>
+  <p style="color:var(--dim);font-size:13.5px;margin-top:8px">MakerWorld models come with tuned print profiles — one click and it's slicing, great if you're on a Bambu.</p>
+
+  <p style="color:var(--dim);font-size:14px;margin-top:14px"><b style="color:var(--text)">On filament:</b> Popandsicle's is ~470 g. Most other full-size Master Swords run <b>500 g – 1 kg+</b> (a comparable one is ~0.5 kg / ~20 h of printing). Want to spend less plastic? Grab one of the <b>“material-efficient”</b> cuts. So pick as much by grams as by looks.</p>
+  <p style="color:var(--dim);font-size:14px;margin-top:10px"><b style="color:var(--text)">Want a different era?</b> Search the game name — <a href="https://makerworld.com/en/search/models?keyword=twilight%20princess%20master%20sword" target="_blank" rel="noopener" style="color:var(--gold)">Twilight Princess</a>, <a href="https://www.printables.com/search/models?q=skyward%20sword%20master%20sword" target="_blank" rel="noopener" style="color:var(--gold)">Skyward Sword</a> and <a href="https://www.printables.com/search/models?q=wind%20waker%20master%20sword" target="_blank" rel="noopener" style="color:var(--gold)">Wind Waker</a> versions are all out there (see the timeline below).</p>
+
+  <h2>Print It</h2>
+  <p class="lead">It's a metre long, so it comes as segments you print a few at a time and join.</p>
+  <div class="grid">
+    <div class="spec"><div class="t">Material</div><div class="d">PLA (sands + primes cleanly)</div></div>
+    <div class="spec"><div class="t">Filament</div><div class="d">~470 g · ~€8</div></div>
+    <div class="spec"><div class="t">Layer height</div><div class="d">0.2 mm</div></div>
+    <div class="spec"><div class="t">Walls</div><div class="d">3–4 (strength at seams)</div></div>
+    <div class="spec"><div class="t">Infill</div><div class="d">10–15%</div></div>
+    <div class="spec"><div class="t">Supports</div><div class="d">only where the guard overhangs</div></div>
+  </div>
+  <p style="color:var(--dim);font-size:14px;margin-top:12px">Cheap “from China” PLA is totally fine for a sand-and-paint prop — just pick a semi-decent budget brand (eSun, Sunlu…) so you're not fighting jams.</p>
+
+  <h2>Finish It</h2>
+  <p class="lead">The printing is the easy part. This is where a good sword is actually made — budget a few evenings.</p>
+  <ol class="steps">
+    <li><b>Join the segments</b> — a dab of superglue or epoxy at each seam. (Popandsicle's design even snaps together, so you may barely need glue.)</li>
+    <li><b>Fill the seams</b> — Bondo spot putty into every joint line.</li>
+    <li><b>Sand</b> — 120 → 220 → 400 grit, knocking down the layer lines.</li>
+    <li><b>Filler primer</b> — a heavy coat that fills the fine texture.</li>
+    <li><b>Sand &amp; repeat</b> — prime, sand, prime again until the lines vanish — then <b>wet-sand fine: 600 → 800 → 1000 grit</b> for a glass-smooth, forged-metal blade (the finish the Vader manual swears by). This is the secret; patience beats skill.</li>
+    <li><b>Paint</b> — mask and lay down the colours below.</li>
+    <li><b>Clear coat</b> — matte on the grip, a little gloss on the blade.</li>
+  </ol>
+
+  <h2>Paint It</h2>
+  <div class="palette">
+    <span class="sw"><i style="background:#dfe7ec"></i> Blade — silver / steel (a whisper of blue)</span>
+    <span class="sw"><i style="background:#4a4d86"></i> Winged guard &amp; grip — blue</span>
+    <span class="sw"><i style="background:#e6c15a"></i> Fittings, wrap &amp; Triforce — gold</span>
+    <span class="sw"><i style="background:#f0b429"></i> Centre gem — amber (or just paint it blue)</span>
+    <span class="sw"><i style="background:#8fe3f0"></i> Optional — the sacred blue glow (LED / backlit)</span>
+  </div>
+  <p style="color:var(--dim);font-size:14px;margin-top:12px">Only got <b>silver, blue, and a gold spray</b>? That's basically the whole sword — silver blade, blue hilt, gold accents. You're already set.</p>
+
+  <h2>The Quest Log</h2>
+  <div class="stats">
+    <div><div class="n">~470g</div><div class="l">filament</div></div>
+    <div><div class="n">~€8</div><div class="l">plastic cost</div></div>
+    <div><div class="n">~25h</div><div class="l">printing</div></div>
+    <div><div class="n">1 m</div><div class="l">full scale</div></div>
+    <div><div class="n">★★★★★</div><div class="l">a few weekends</div></div>
+  </div>
+
+  <h2>Through the Years</h2>
+  <p class="lead">The Blade of Evil's Bane has been reforged in every era. Here's how it changed — pick the version you want to build.</p>
+  <div class="timeline">
+    <div class="tl"><div class="tl-sword"><svg class="ms-mini" viewBox="0 0 52 176" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 8 L31 20 L31 96 L21 96 L21 20 Z" fill="#86d9ec" stroke="#3e7f95" stroke-width="1"/>
+<line x1="26" y1="14" x2="26" y2="94" stroke="#ffffff" stroke-width="1" opacity=".55"/>
+<path d="M6 92 Q26 106 46 92 L46 99 Q26 114 6 99 Z" fill="#e8c860" stroke="#8a6a1c" stroke-width="1"/>
+<rect x="22" y="104" width="8" height="34" rx="3" fill="#c03a30" stroke="#7c1f18" stroke-width="1"/>
+<path d="M22 112 H30 M22 128 H30" stroke="#e8c860" stroke-width="1.4"/>
+<path d="M26 140 L32 148 L26 156 L20 148 Z" fill="#e8c860" stroke="#8a6a1c" stroke-width="1"/>
+</svg></div><span class="tl-y">1991</span><div class="tl-b"><b>A Link to the Past</b> — its debut. Purple grip &amp; blue guard in the pedestal, red grip &amp; gold guard once drawn — and that crystal-blue blade that's been its signature ever since.</div></div>
+    <div class="tl"><div class="tl-sword"><svg class="ms-mini" viewBox="0 0 52 176" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 6 L30 18 L30 98 L22 98 L22 18 Z" fill="#eef4f8" stroke="#5a7d94" stroke-width="1"/>
+<line x1="26" y1="12" x2="26" y2="96" stroke="#c3d3dc" stroke-width="1.4"/>
+<path d="M22 98 C12 96 5 90 3 79 C9 85 15 88 21 90 Z" fill="#2f5fa8" stroke="#1d3c74" stroke-width="1"/>
+<path d="M30 98 C40 96 47 90 49 79 C43 85 37 88 31 90 Z" fill="#2f5fa8" stroke="#1d3c74" stroke-width="1"/>
+<path d="M20 96 L32 96 L35 106 L26 116 L17 106 Z" fill="#2f5fa8" stroke="#1d3c74" stroke-width="1"/>
+<path d="M26 99 L30 106 L26 113 L22 106 Z" fill="#f0b429" stroke="#8a6a1c" stroke-width=".8"/>
+<rect x="22" y="114" width="8" height="30" rx="3" fill="#3f8f5a" stroke="#24603a" stroke-width="1"/>
+<path d="M22 118 L30 126 M22 126 L30 134 M22 134 L30 142 M30 118 L22 126 M30 126 L22 134 M30 134 L22 142" stroke="#2c6e42" stroke-width="1.2"/>
+<path d="M20 144 L32 144 L30 158 L22 158 Z" fill="#2f5fa8" stroke="#1d3c74" stroke-width="1"/>
+<rect x="20" y="144" width="12" height="3" fill="#e8c860"/>
+</svg></div><span class="tl-y">1998</span><div class="tl-b"><b>Ocarina of Time</b> — <span class="chime">the version everyone pictures.</span> Blue handle, green grip wrap, the blue winged guard, a yellow gem, and the Triforce etched on the blade. First time in full 3D.</div></div>
+    <div class="tl"><div class="tl-sword"><svg class="ms-mini" viewBox="0 0 52 176" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 30 Q33 38 32 50 L32 100 L20 100 L20 50 Q19 38 26 30 Z" fill="#a5ecf2" stroke="#3f8fa0" stroke-width="1.2"/>
+<line x1="26" y1="38" x2="26" y2="98" stroke="#ffffff" stroke-width="1.4" opacity=".6"/>
+<path d="M8 98 Q26 112 44 98 L44 108 Q26 122 8 108 Z" fill="#3f9fd0" stroke="#205f88" stroke-width="1.2"/>
+<circle cx="26" cy="107" r="4.5" fill="#ffd23f" stroke="#9c7622" stroke-width="1"/>
+<rect x="21" y="116" width="10" height="26" rx="4" fill="#8a5fc0" stroke="#5a3a86" stroke-width="1.2"/>
+<path d="M21 120 H31 M21 137 H31" stroke="#e8c860" stroke-width="1.6"/>
+<circle cx="26" cy="150" r="6" fill="#3f9fd0" stroke="#205f88" stroke-width="1.2"/>
+<circle cx="24" cy="148" r="1.6" fill="#bfe8ff"/>
+</svg></div><span class="tl-y">2002</span><div class="tl-b"><b>The Wind Waker</b> — toon-shaded and chunky, a bold purple grip. Lost its power… then woke back up.</div></div>
+    <div class="tl"><div class="tl-sword"><svg class="ms-mini" viewBox="0 0 52 176" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 4 L29.5 16 L29.5 100 L22.5 100 L22.5 16 Z" fill="#d9dfe6" stroke="#6a7688" stroke-width="1"/>
+<line x1="26" y1="10" x2="26" y2="98" stroke="#ffffff" stroke-width=".9" opacity=".45"/>
+<path d="M23 100 C14 97 8 88 6 70 C9 78 13 84 18 88 C16 80 16 74 17 66 C19 78 21 88 23 94 Z" fill="#3a3f66" stroke="#23264a" stroke-width="1"/>
+<path d="M29 100 C38 97 44 88 46 70 C43 78 39 84 34 88 C36 80 36 74 35 66 C33 78 31 88 29 94 Z" fill="#3a3f66" stroke="#23264a" stroke-width="1"/>
+<path d="M6 70 C9 78 13 84 18 88" fill="none" stroke="#c9a43a" stroke-width=".9" opacity=".8"/>
+<path d="M46 70 C43 78 39 84 34 88" fill="none" stroke="#c9a43a" stroke-width=".9" opacity=".8"/>
+<path d="M20 98 L32 98 L34 108 L26 118 L18 108 Z" fill="#3a3f66" stroke="#23264a" stroke-width="1"/>
+<path d="M26 101 L29 108 L26 115 L23 108 Z" fill="#e8d27a" stroke="#8a6a1c" stroke-width=".7"/>
+<rect x="22.5" y="116" width="7" height="32" rx="2.5" fill="#2c3055" stroke="#191b36" stroke-width="1"/>
+<path d="M22.5 121 H29.5 M22.5 126 H29.5 M22.5 131 H29.5 M22.5 136 H29.5 M22.5 141 H29.5" stroke="#8a92b0" stroke-width=".8" opacity=".8"/>
+<path d="M21 148 L31 148 L33 154 L26 164 L19 154 Z" fill="#3a3f66" stroke="#c9a43a" stroke-width=".8"/>
+<circle cx="26" cy="154" r="2" fill="#e8d27a"/>
+</svg></div><span class="tl-y">2006</span><div class="tl-b"><b>Twilight Princess</b> — darker, grittier and battle-ready. A deep blue-purple grip and a heavier, realistic look — the "cool" one.</div></div>
+    <div class="tl"><div class="tl-sword"><svg class="ms-mini" viewBox="0 0 52 176" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 10 L30 22 L30 92 L22 92 L22 22 Z" fill="#ecf4fc" stroke="#7d9ab8" stroke-width="1"/>
+<line x1="26" y1="16" x2="26" y2="90" stroke="#ffffff" stroke-width="1" opacity=".6"/>
+<path d="M26 86 C38 86 45 95 45 105 C45 116 37 123 26 125 C15 123 7 116 7 105 C7 95 14 86 26 86 Z" fill="#3b4b8f" stroke="#26305f" stroke-width="1.2"/>
+<path d="M26 96 L33 110 L19 110 Z" fill="#e6c15a" stroke="#8a6a1c" stroke-width=".8"/>
+<rect x="22" y="125" width="8" height="24" rx="3" fill="#4a6fc0" stroke="#2c4a94" stroke-width="1"/>
+<circle cx="26" cy="158" r="6.5" fill="none" stroke="#e6c15a" stroke-width="2.6"/>
+<circle cx="26" cy="158" r="2" fill="#4a6fc0"/>
+</svg></div><span class="tl-y">2011</span><div class="tl-b"><b>Skyward Sword</b> — the origin. It starts as the <b>Goddess Sword</b> (with the spirit Fi living inside it) and gets tempered, step by step, into the Master Sword itself.</div></div>
+    <div class="tl"><div class="tl-sword"><svg class="ms-mini" viewBox="0 0 52 176" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 8 L31 20 L31 96 L21 96 L21 20 Z" fill="#90dcec" stroke="#3e7f95" stroke-width="1"/>
+<line x1="26" y1="14" x2="26" y2="94" stroke="#ffffff" stroke-width="1" opacity=".55"/>
+<path d="M22 96 C12 94 5 88 3 79 C9 85 15 88 21 90 Z" fill="#3a6ec0" stroke="#22488a" stroke-width="1"/>
+<path d="M30 96 C40 94 47 88 49 79 C43 85 37 88 31 90 Z" fill="#3a6ec0" stroke="#22488a" stroke-width="1"/>
+<path d="M20 94 L32 94 L35 104 L26 114 L17 104 Z" fill="#e6c15a" stroke="#8a6a1c" stroke-width="1"/>
+<path d="M26 97 L30 104 L26 111 L22 104 Z" fill="#3a6ec0"/>
+<rect x="22" y="112" width="8" height="30" rx="3" fill="#7a4fb0" stroke="#4b2f78" stroke-width="1"/>
+<path d="M22 120 H30 M22 132 H30" stroke="#4b2f78" stroke-width="1.2"/>
+<path d="M26 142 L32 150 L26 158 L20 150 Z" fill="#e6c15a" stroke="#8a6a1c" stroke-width="1"/>
+<circle cx="26" cy="150" r="1.8" fill="#3a6ec0"/>
+</svg></div><span class="tl-y">2013</span><div class="tl-b"><b>A Link Between Worlds</b> — back to the classic top-down look, and temperable into stronger, golden forms.</div></div>
+    <div class="tl"><div class="tl-sword"><svg class="ms-mini" viewBox="0 0 52 176" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 6 L30 18 L30 98 L22 98 L22 18 Z" fill="#dcecf4" stroke="#5d8296" stroke-width="1"/>
+<line x1="26" y1="12" x2="26" y2="96" stroke="#ffffff" stroke-width="1" opacity=".5"/>
+<path d="M26 84 L28.5 88.5 L23.5 88.5 Z" fill="#e6c15a" opacity=".9"/>
+<path d="M23 98 C12 95 4 88 2 77 C8 84 15 87 21 90 L22 96 Z" fill="#3f4278" stroke="#2b2e56" stroke-width="1"/>
+<path d="M29 98 C40 95 48 88 50 77 C44 84 37 87 31 90 L30 96 Z" fill="#3f4278" stroke="#2b2e56" stroke-width="1"/>
+<path d="M22 95 C14 93 8 88 6 81 C11 86 16 88 21 91 Z" fill="#6a6fc0" opacity=".85"/>
+<path d="M30 95 C38 93 44 88 46 81 C41 86 36 88 31 91 Z" fill="#6a6fc0" opacity=".85"/>
+<path d="M19 96 L33 96 L36 105 L26 118 L16 105 Z" fill="#3f4278" stroke="#2b2e56" stroke-width="1"/>
+<path d="M26 99 L30.5 106 L26 113 L21.5 106 Z" fill="#f0b429" stroke="#8a6a1c" stroke-width=".8"/>
+<circle cx="24.8" cy="103.5" r="1" fill="#fff" opacity=".85"/>
+<rect x="17.5" y="115" width="4" height="5" rx="1" fill="#e6c15a"/>
+<rect x="30.5" y="115" width="4" height="5" rx="1" fill="#e6c15a"/>
+<rect x="22" y="119" width="8" height="30" rx="3" fill="#484b88" stroke="#2e3160" stroke-width="1"/>
+<path d="M22 122 L30 129 M22 129 L30 136 M22 136 L30 143 M30 122 L22 129 M30 129 L22 136 M30 136 L22 143" stroke="#e6c15a" stroke-width="1.1" opacity=".95"/>
+<path d="M26 149 L32 153 L32 161 L26 166 L20 161 L20 153 Z" fill="#3f4278" stroke="#2b2e56" stroke-width="1"/>
+<path d="M26 149 L26 166 M20 153 L32 161 M32 153 L20 161" stroke="#2b2e56" stroke-width=".8" opacity=".6"/>
+<path d="M26 149 L32 153 L26 157 L20 153 Z" fill="#8386c6" opacity=".55"/>
+</svg></div><span class="tl-y">2017</span><div class="tl-b"><b>Breath of the Wild</b> — ancient and <b>battle-worn</b>, glowing crystalline blue near Malice. <span class="chime">The one most people 3D-print.</span></div></div>
+    <div class="tl"><div class="tl-sword"><svg class="ms-mini" viewBox="0 0 52 176" xmlns="http://www.w3.org/2000/svg">
+<line x1="26" y1="4" x2="26" y2="96" stroke="#8fe3f0" stroke-width="12" opacity=".14" stroke-linecap="round"/>
+<path d="M26 2 L30 14 L30 98 L22 98 L22 14 Z" fill="#e4f6f2" stroke="#5d9690" stroke-width="1"/>
+<line x1="26" y1="8" x2="26" y2="96" stroke="#ffffff" stroke-width="1" opacity=".55"/>
+<path d="M26 84 L28.5 88.5 L23.5 88.5 Z" fill="#e6c15a" opacity=".9"/>
+<path d="M23 98 C12 95 4 88 2 77 C8 84 15 87 21 90 L22 96 Z" fill="#3f4278" stroke="#2b2e56" stroke-width="1"/>
+<path d="M29 98 C40 95 48 88 50 77 C44 84 37 87 31 90 L30 96 Z" fill="#3f4278" stroke="#2b2e56" stroke-width="1"/>
+<path d="M22 95 C14 93 8 88 6 81 C11 86 16 88 21 91 Z" fill="#6a6fc0" opacity=".85"/>
+<path d="M30 95 C38 93 44 88 46 81 C41 86 36 88 31 91 Z" fill="#6a6fc0" opacity=".85"/>
+<path d="M19 96 L33 96 L36 105 L26 118 L16 105 Z" fill="#3f4278" stroke="#2b2e56" stroke-width="1"/>
+<path d="M26 99 L30.5 106 L26 113 L21.5 106 Z" fill="#f0b429" stroke="#8a6a1c" stroke-width=".8"/>
+<circle cx="24.8" cy="103.5" r="1" fill="#fff" opacity=".85"/>
+<rect x="17.5" y="115" width="4" height="5" rx="1" fill="#e6c15a"/>
+<rect x="30.5" y="115" width="4" height="5" rx="1" fill="#e6c15a"/>
+<rect x="22" y="119" width="8" height="30" rx="3" fill="#484b88" stroke="#2e3160" stroke-width="1"/>
+<path d="M22 122 L30 129 M22 129 L30 136 M22 136 L30 143 M30 122 L22 129 M30 129 L22 136 M30 136 L22 143" stroke="#e6c15a" stroke-width="1.1" opacity=".95"/>
+<path d="M26 149 L32 153 L32 161 L26 166 L20 161 L20 153 Z" fill="#3f4278" stroke="#2b2e56" stroke-width="1"/>
+<path d="M26 149 L26 166 M20 153 L32 161 M32 153 L20 161" stroke="#2b2e56" stroke-width=".8" opacity=".6"/>
+<path d="M26 149 L32 153 L26 157 L20 153 Z" fill="#8386c6" opacity=".55"/>
+</svg></div><span class="tl-y">2023</span><div class="tl-b"><b>Tears of the Kingdom</b> — decayed by Gloom and <b>shattered</b>, then restored longer and reforged. Fuse it with items to change its look and power.</div></div>
+  </div>
+
+  <h2>Before You Start</h2>
+  <div class="card" style="border-color:var(--gold2)">
+    <div class="lbl">⚠ Stay safe, Hero</div>
+    <ul style="list-style:none;padding:0;line-height:2">
+      <li>◆ <b>Wear a dust mask</b> when sanding — PLA dust is fine and you don't want it in your lungs.</li>
+      <li>◆ <b>Prime and spray outside or by an open window.</b> Primer and paint fumes need fresh air.</li>
+      <li>◆ <b>Get a grown-up for the sharp + hot stuff</b> — craft knives, files, the printer nozzle and a soldering iron for the optional LED all bite.</li>
+      <li>◆ This is a <b>display prop</b>. Leave the edge blunt, don't swing it at anyone, and remember PLA is brittle — it's for photos and shelves, not battles.</li>
+    </ul>
+  </div>
+
+  <div class="disc">
+    <p style="margin-bottom:14px"><span class="chime">“It's a secret to everybody.”</span></p>
+    <p style="margin-bottom:12px">
+      <b style="color:var(--text)">Disclaimer:</b> This is an unofficial, fan-made bonus — a hidden little easter egg tucked inside
+      <a href="index.html" style="color:var(--gold)">The Operation Series</a>, built by a kid and shared free.
+      It is <b>not affiliated with, authorised, endorsed by, or connected to</b> Nintendo Co., Ltd. or any related entity.
+      <i>The Legend of Zelda</i>, <i>Breath of the Wild</i>, <i>Tears of the Kingdom</i>, the Master Sword and the Triforce
+      are trademarks of Nintendo. This guide is for <b>personal, non-commercial use only</b> and is not for sale.
+    </p>
+    <p style="margin-bottom:12px">
+      The 3D model belongs to its creator, <b style="color:var(--gold)">Popandsicle</b> — the links above point to their public
+      Printables page, and <b>no files are hosted here</b>. If you print it, drop them a review and a like; makers run on that.
+      Always check a model's licence before printing, and print for yourself, not to sell.
+    </p>
+    <p style="color:var(--faint)">
+      Free to share · free to remix · free to fail and start over. Now go forth and pull the blade from the pedestal. ✦
+    </p>
+  </div>
+  <footer>
+    <a href="index.html">← back to the archive</a>
+    <div style="margin-top:16px;font-family:'Cinzel',serif;letter-spacing:4px;font-size:10px;color:var(--faint)">THE OPERATION SERIES · HIDDEN VAULT · MASTER SWORD</div>
+  </footer>
+</div>
+<!-- ✦ a secret within the secret ✦ -->
+<a href="egg.html" class="secret-egg" title="…do you hear peeping?" aria-label="another secret">
+  <svg viewBox="0 0 20 26"><path d="M10 2 C15 2 18 10 18 16 C18 21.5 14.5 24 10 24 C5.5 24 2 21.5 2 16 C2 10 5 2 10 2 Z" fill="#efe8d8"/><circle cx="7.5" cy="10" r="1.2" fill="#d9cfae"/></svg>
+</a>
+<style>
+.secret-egg{position:fixed;bottom:12px;right:14px;z-index:80;width:17px;opacity:.07;transition:opacity .45s ease,transform .45s ease;cursor:pointer}
+.secret-egg:hover,.secret-egg:focus{opacity:1;transform:scale(1.3) rotate(-8deg);filter:drop-shadow(0 0 9px rgba(239,232,216,.6));outline:none}
+@media print{.secret-egg{display:none}}
+</style>
+</body>
+</html>
