@@ -1739,6 +1739,20 @@ body[style*="--char-accent"] #manual {
   <a href="master-sword.html" class="secret-triforce" title="It's dangerous to go alone…" aria-label="a secret">
     <svg viewBox="0 0 30 27"><path d="M15 1 L22 13 L8 13 Z"/><path d="M8 14 L15 26 L1 26 Z"/><path d="M22 14 L29 26 L15 26 Z"/></svg>
   </a>
+<!-- PS-RING-START -->
+<div class="ps-ring">
+  <span class="ps-ring-label">🌐 More by Peter Stam · age 11 · Berlin</span>
+  <a href="https://worlds.peterstam.eu">Everything I Made</a> <span class="ps-ring-sep">·</span> <a href="https://peterstam.eu">My Books</a> <span class="ps-ring-sep">·</span> <a href="https://littleone.peterstam.eu">Little One</a> <span class="ps-ring-sep">·</span> <span class="ps-ring-here">Operation Series</span> <span class="ps-ring-sep">·</span> <a href="https://castlefood.eu">Fry City</a> <span class="ps-ring-sep">·</span> <a href="https://chalkboard.peterstam.eu">Chalkboard</a> <span class="ps-ring-sep">·</span> <a href="https://raiseabuilder.com">Raise a Builder</a> <span class="ps-ring-sep">·</span> <a href="https://thedesigndelta.com">The Design Delta</a>
+</div>
+<style>
+.ps-ring{margin:18px auto 0;padding-top:14px;border-top:1px solid rgba(128,128,128,.28);font-family:'Rajdhani',sans-serif;font-size:15px;line-height:1.9;text-align:center;max-width:900px}
+.ps-ring a{color:var(--gold);text-decoration:none;font-weight:600}
+.ps-ring a:hover{text-decoration:underline}
+.ps-ring .ps-ring-here{color:var(--red);font-weight:700}
+.ps-ring .ps-ring-sep{opacity:.4}
+.ps-ring .ps-ring-label{display:block;opacity:.65;text-transform:uppercase;letter-spacing:2px;font-size:.8em;margin-bottom:6px}
+</style>
+<!-- PS-RING-END -->
 </footer>
 <style>
 .secret-triforce{position:fixed;bottom:12px;left:14px;z-index:80;width:24px;opacity:.08;transition:opacity .45s ease,transform .45s ease;cursor:pointer}
@@ -3565,32 +3579,5 @@ body.brl-off{transition:none!important;transform:none!important}
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') hm.classList.remove('show'); });
 })();
 </script>
-<!-- PS-WEBRING-START -->
-<div id="ps-webring">
-  <div class="ps-inner">
-    <span class="ps-title">🌐 More by Peter Stam · age 11 · Berlin</span>
-    <nav class="ps-links">
-      <a href="https://worlds.peterstam.eu">Everything I Made</a>
-      <a href="https://peterstam.eu">My Books</a>
-      <a href="https://littleone.peterstam.eu">Little One</a>
-      <span class="ps-here">Operation Series</span>
-      <a href="https://castlefood.eu">Fry City</a>
-      <a href="https://chalkboard.peterstam.eu">Chalkboard</a>
-      <a href="https://raiseabuilder.com">Raise a Builder</a>
-      <a href="https://thedesigndelta.com">The Design Delta</a>
-    </nav>
-  </div>
-</div>
-<style>
-#ps-webring{background:#0d0808;padding:22px 18px;border-top:2px solid #c8102e;width:100%;box-sizing:border-box;position:relative;z-index:9;box-shadow:0 -6px 26px rgba(200,16,46,.12)}
-#ps-webring *{box-sizing:border-box}
-#ps-webring .ps-inner{max-width:1000px;margin:0 auto;text-align:center}
-#ps-webring .ps-title{display:block;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#8a7676;margin-bottom:14px}
-#ps-webring .ps-links{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center}
-#ps-webring .ps-links a{font-family:'Rajdhani',sans-serif;color:#d4a017;text-decoration:none;font-size:16px;font-weight:600;border-bottom:1px solid transparent;padding-bottom:1px;transition:.15s}
-#ps-webring .ps-links a:hover{border-bottom-color:#d4a017;color:#e0d8d8}
-#ps-webring .ps-here{font-family:'Rajdhani',sans-serif;color:#c8102e;font-size:16px;font-weight:700}
-</style>
-<!-- PS-WEBRING-END -->
 </body>
 </html>
